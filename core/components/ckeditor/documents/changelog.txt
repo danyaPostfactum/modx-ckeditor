@@ -1,0 +1,24 @@
+Changelog for CKEditor integration into MODx Revolution.
+
+CKEditor 1.1.0
+====================================
+- MODx file browser integration
+- richtext TV support
+- Custom Resource Classes (Articles for ex.) support
+- Improved drag'd'drop from trees (insert images directly from File Tree)
+- Fixed Ctrl+S shorcut
+- Extra plugins setting
+- Editor skin setting
+
+CKEditor 1.0.2
+====================================
+- Fixed blocking bug occured in Firefox
+
+CKEditor 1.0.1
+====================================
+- Fixed fatal error
+- Inherit height of textarea
+
+CKEditor 1.0.0
+====================================
+- Initial commit
