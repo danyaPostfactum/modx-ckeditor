@@ -93,6 +93,24 @@ $settings['remove_plugins']->fromArray(array(
         'area' => 'general'
     ),'',true,true);
 
+$settings['enter_mode']= $modx->newObject('modSystemSetting');
+$settings['enter_mode']->fromArray(array(
+        'key' => 'ckeditor.enter_mode',
+        'xtype' => 'textfield',
+        'value' => 'CKEDITOR.ENTER_P',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
+$settings['shift_enter_mode']= $modx->newObject('modSystemSetting');
+$settings['shift_enter_mode']->fromArray(array(
+        'key' => 'ckeditor.shift_enter_mode',
+        'xtype' => 'textfield',
+        'value' => 'CKEDITOR.ENTER_BR',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
 $settings['auto_paragraph']= $modx->newObject('modSystemSetting');
 $settings['auto_paragraph']->fromArray(array(
         'key' => 'ckeditor.auto_paragraph',

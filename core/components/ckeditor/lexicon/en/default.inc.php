@@ -28,6 +28,10 @@ $_lang['setting_ckeditor.body_id'] = 'Editor area body ID';
 $_lang['setting_ckeditor.body_id_desc'] = 'ID attribute to be used on the body element of the editing area.';
 $_lang['setting_ckeditor.remove_plugins'] = 'Remove plugins';
 $_lang['setting_ckeditor.remove_plugins_desc'] = 'List of plugins to exclude, separated by «,».';
+$_lang['setting_ckeditor.enter_mode'] = 'Enter key behavior';
+$_lang['setting_ckeditor.enter_mode_desc'] = 'Defines the behavior of the Enter key. It also determines other behavior rules of the editor, like whether the <br> element is to be used as a paragraph separator when indenting text.';
+$_lang['setting_ckeditor.shift_enter_mode'] = 'Shift+Enter key combination behavior';
+$_lang['setting_ckeditor.shift_enter_mode_desc'] = 'Defines the behavior of the Shift+Enter key combination.';
 $_lang['setting_ckeditor.auto_paragraph'] = 'Auto-paragraph';
 $_lang['setting_ckeditor.auto_paragraph_desc'] = 'Whether automatically create wrapping blocks around inline contents inside document body, this helps to ensure the integrality of the block enter mode.';
 

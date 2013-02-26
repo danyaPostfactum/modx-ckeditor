@@ -74,6 +74,8 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
         toolbar:                MODx.config['ckeditor.toolbar'] ? JSON.parse(MODx.config['ckeditor.toolbar']) : null,
         extraPlugins:           MODx.config['ckeditor.extra_plugins'].replace(' ', '') || '',
         removePlugins:          MODx.config['ckeditor.remove_plugins'].replace(' ', '') || '',
+        enterMode:              MODx.config['ckeditor.enter_mode'] || 'CKEDITOR.ENTER_P',
+        shiftEnterMode:         MODx.config['ckeditor.shift_enter_mode'] || 'CKEDITOR.ENTER_BR',
         stylesSet:              MODx.config['ckeditor.styles_set'] ? (function () {
           var out;
           try { out = JSON.parse(MODx.config['ckeditor.styles_set']) } catch(e) { out = 'default'; }
