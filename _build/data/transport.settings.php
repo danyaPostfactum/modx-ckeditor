@@ -66,4 +66,13 @@ $settings['styles_set']->fromArray(array(
         'area' => 'general'
     ),'',true,true);
 
+$settings['remove_plugins']= $modx->newObject('modSystemSetting');
+$settings['remove_plugins']->fromArray(array(
+        'key' => 'ckeditor.remove_plugins',
+        'xtype' => 'textfield',
+        'value' => '',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
 return $settings;
