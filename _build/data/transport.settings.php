@@ -93,4 +93,13 @@ $settings['remove_plugins']->fromArray(array(
         'area' => 'general'
     ),'',true,true);
 
+$settings['auto_paragraph']= $modx->newObject('modSystemSetting');
+$settings['auto_paragraph']->fromArray(array(
+        'key' => 'ckeditor.auto_paragraph',
+        'xtype' => 'combo-boolean',
+        'value' => '0',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
 return $settings;

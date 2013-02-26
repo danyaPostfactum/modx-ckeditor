@@ -28,6 +28,8 @@ $_lang['setting_ckeditor.body_id'] = 'Editor area body ID';
 $_lang['setting_ckeditor.body_id_desc'] = 'ID attribute to be used on the body element of the editing area.';
 $_lang['setting_ckeditor.remove_plugins'] = 'Remove plugins';
 $_lang['setting_ckeditor.remove_plugins_desc'] = 'List of plugins to exclude, separated by «,».';
+$_lang['setting_ckeditor.auto_paragraph'] = 'Auto-paragraph';
+$_lang['setting_ckeditor.auto_paragraph_desc'] = 'Whether automatically create wrapping blocks around inline contents inside document body, this helps to ensure the integrality of the block enter mode.';
 
 $_lang['ui_ckeditor.insert_object_link'] = 'Insert object link';
 $_lang['ui_ckeditor.insert_object_name'] = 'Insert object name';
