@@ -79,6 +79,8 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
           try { out = JSON.parse(MODx.config['ckeditor.styles_set']) } catch(e) { out = 'default'; }
           return out;
         })() : 'default',
+        bodyClass:              MODx.config['ckeditor.body_class'] || '',
+        bodyId:                 MODx.config['ckeditor.body_id'] || '',
         keystrokes:             [], // TODO !!!
         startupMode:            MODx.config['ckeditor.startup_mode'] || 'wysiwyg',
         undoStackSize:          MODx.config['ckeditor.undo_size'] || 100,

@@ -22,6 +22,10 @@ $_lang['setting_ckeditor.object_resizing'] = 'Object resizing';
 $_lang['setting_ckeditor.object_resizing_desc'] = 'Enable object resizing (images, tables).';
 $_lang['setting_ckeditor.styles_set'] = 'CSS styles set';
 $_lang['setting_ckeditor.styles_set_desc'] = 'The "styles definition set" to use in the editor. Provide a JSON string or a the name of a predefined Styles Set as a string. Reference: http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.stylesSet';
+$_lang['setting_ckeditor.body_class'] = 'Editor area body class';
+$_lang['setting_ckeditor.body_class_desc'] = 'Class attribute to be used on the body element of the editing area.';
+$_lang['setting_ckeditor.body_id'] = 'Editor area body ID';
+$_lang['setting_ckeditor.body_id_desc'] = 'ID attribute to be used on the body element of the editing area.';
 $_lang['setting_ckeditor.remove_plugins'] = 'Remove plugins';
 $_lang['setting_ckeditor.remove_plugins_desc'] = 'List of plugins to exclude, separated by «,».';
 

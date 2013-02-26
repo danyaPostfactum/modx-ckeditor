@@ -66,6 +66,24 @@ $settings['styles_set']->fromArray(array(
         'area' => 'general'
     ),'',true,true);
 
+$settings['body_class']= $modx->newObject('modSystemSetting');
+$settings['body_class']->fromArray(array(
+        'key' => 'ckeditor.body_class',
+        'xtype' => 'textfield',
+        'value' => '',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
+$settings['body_id']= $modx->newObject('modSystemSetting');
+$settings['body_id']->fromArray(array(
+        'key' => 'ckeditor.body_id',
+        'xtype' => 'textfield',
+        'value' => '',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
 $settings['remove_plugins']= $modx->newObject('modSystemSetting');
 $settings['remove_plugins']->fromArray(array(
         'key' => 'ckeditor.remove_plugins',
