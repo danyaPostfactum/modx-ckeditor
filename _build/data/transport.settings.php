@@ -120,4 +120,13 @@ $settings['auto_paragraph']->fromArray(array(
         'area' => 'general'
     ),'',true,true);
 
+$settings['native_spellchecker']= $modx->newObject('modSystemSetting');
+$settings['native_spellchecker']->fromArray(array(
+        'key' => 'ckeditor.native_spellchecker',
+        'xtype' => 'combo-boolean',
+        'value' => '1',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
 return $settings;

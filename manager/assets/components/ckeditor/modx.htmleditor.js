@@ -87,8 +87,8 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
         startupMode:            MODx.config['ckeditor.startup_mode'] || 'wysiwyg',
         undoStackSize:          MODx.config['ckeditor.undo_size'] || 100,
         entities:           false,
-        disableNativeSpellChecker: false,
         autoParagraph:          MODx.config['ckeditor.auto_paragraph'] == true,
+        disableNativeSpellChecker: MODx.config['ckeditor.native_spellchecker'] == false,
         filebrowserBrowseUrl: MODx.config['manager_url'] + 'index.php?a=' + MODx.action['browser'] + '&source=' + MODx.config['default_media_source'], // TODO !!!
         dialog_backgroundCoverColor: 'silver',
         dialog_backgroundCoverOpacity: '0.5',

@@ -34,6 +34,8 @@ $_lang['setting_ckeditor.shift_enter_mode'] = 'Shift+Enter key combination behav
 $_lang['setting_ckeditor.shift_enter_mode_desc'] = 'Defines the behavior of the Shift+Enter key combination.';
 $_lang['setting_ckeditor.auto_paragraph'] = 'Auto-paragraph';
 $_lang['setting_ckeditor.auto_paragraph_desc'] = 'Whether automatically create wrapping blocks around inline contents inside document body, this helps to ensure the integrality of the block enter mode.';
+$_lang['setting_ckeditor.native_spellchecker'] = 'Native spellchecker';
+$_lang['setting_ckeditor.native_spellchecker_desc'] = 'Enables the built-in words spell checker if browser provides one.';
 
 $_lang['ui_ckeditor.insert_object_link'] = 'Insert object link';
 $_lang['ui_ckeditor.insert_object_name'] = 'Insert object name';
