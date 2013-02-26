@@ -93,6 +93,15 @@ $settings['remove_plugins']->fromArray(array(
         'area' => 'general'
     ),'',true,true);
 
+$settings['native_table_handles']= $modx->newObject('modSystemSetting');
+$settings['native_table_handles']->fromArray(array(
+        'key' => 'ckeditor.native_table_handles',
+        'xtype' => 'combo-boolean',
+        'value' => '0',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
 $settings['enter_mode']= $modx->newObject('modSystemSetting');
 $settings['enter_mode']->fromArray(array(
         'key' => 'ckeditor.enter_mode',
