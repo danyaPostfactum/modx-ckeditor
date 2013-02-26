@@ -20,6 +20,8 @@ $_lang['setting_ckeditor.extra_plugins'] = 'Extra plugins';
 $_lang['setting_ckeditor.extra_plugins_desc'] = 'List of plugins, separated by «,». All plugins must be located in the «{manager_path}/assets/components/ckeditor/ckeditor/plugins/» folder.';
 $_lang['setting_ckeditor.object_resizing'] = 'Object resizing';
 $_lang['setting_ckeditor.object_resizing_desc'] = 'Enable object resizing (images, tables).';
+$_lang['setting_ckeditor.styles_set'] = 'CSS styles set';
+$_lang['setting_ckeditor.styles_set_desc'] = 'The "styles definition set" to use in the editor. Provide a JSON string or a the name of a predefined Styles Set as a string. Reference: http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.stylesSet';
 
 $_lang['ui_ckeditor.insert_object_link'] = 'Insert object link';
 $_lang['ui_ckeditor.insert_object_name'] = 'Insert object name';
