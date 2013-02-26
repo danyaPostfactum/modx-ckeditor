@@ -75,6 +75,7 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
         extraPlugins:           MODx.config['ckeditor.extra_plugins'].replace(' ', '') || '',
         removePlugins:          MODx.config['ckeditor.remove_plugins'].replace(' ', '') || '',
         disableNativeTableHandles: MODx.config['ckeditor.native_table_handles'] == false,
+        disableObjectResizing:  MODx.config['ckeditor.object_resizing'] == false,
         enterMode:              MODx.config['ckeditor.enter_mode'] || 'CKEDITOR.ENTER_P',
         shiftEnterMode:         MODx.config['ckeditor.shift_enter_mode'] || 'CKEDITOR.ENTER_BR',
         stylesSet:              MODx.config['ckeditor.styles_set'] ? (function () {
