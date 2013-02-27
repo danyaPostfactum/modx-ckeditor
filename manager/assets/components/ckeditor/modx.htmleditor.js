@@ -9,7 +9,6 @@ Ext.ux.CKEditor = function(config){
 
 };
 
-
 Ext.extend(Ext.ux.CKEditor, Ext.form.TextArea,  {
 
     editorConfig: {},
@@ -76,8 +75,6 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
         removePlugins:          MODx.config['ckeditor.remove_plugins'].replace(' ', '') || '',
         disableNativeTableHandles: MODx.config['ckeditor.native_table_handles'] == false,
         disableObjectResizing:  MODx.config['ckeditor.object_resizing'] == false,
-        enterMode:              MODx.config['ckeditor.enter_mode'] || 'CKEDITOR.ENTER_P',
-        shiftEnterMode:         MODx.config['ckeditor.shift_enter_mode'] || 'CKEDITOR.ENTER_BR',
         stylesSet:              MODx.config['ckeditor.styles_set'] ? (function () {
           var out;
           try { out = JSON.parse(MODx.config['ckeditor.styles_set']) } catch(e) { out = 'default'; }
@@ -105,9 +102,24 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
 
         MODx.ux.CKEditor.superclass.onRender.call(this, ct, position);
 
-        var editor = this.editor
+        var editor = this.editor;
 
         var updateButton = null;
+
+        var getCKEditorEnterModeConst = function (obj, prop, def) {
+            var i,
+                elArr = ['P','BR','DIV'],
+                out = obj['ENTER_' + def]
+            for (i=0;i<elArr.length;i++) {
+                if (prop.toUpperCase() === elArr[i]) {
+                    out = obj['ENTER_' + elArr[i]];
+                }
+            }
+            return out;
+        };
+
+        editor.config.enterMode = getCKEditorEnterModeConst(CKEDITOR, MODx.config['ckeditor.enter_mode'], 'P');
+        editor.config.shiftEnterMode = getCKEditorEnterModeConst(CKEDITOR, MODx.config['ckeditor.shift_enter_mode'], 'BR');
 
         (function(){
             var pageButtons = MODx.activePage ? MODx.activePage.buttons : {};
