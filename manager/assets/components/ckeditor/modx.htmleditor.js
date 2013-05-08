@@ -319,7 +319,8 @@ MODx.loadRTE = function(id) {
         width: 'auto',
         height: parseInt(original.dom.style.height) > 200 ? parseInt(original.dom.style.height) : 200,
         value: original.dom.value || '<p></p>',
-        name: original.dom.name
+        name: original.dom.name,
+        original: id
     });
     original.dom.style.display = 'none';
     original.dom.name = '';
@@ -340,9 +341,30 @@ MODx.loadRTE = function(id) {
     });
 };
 
+MODx.unloadRTE = function(id) {
+    // Get the component
+    var elem = Ext.getCmp(id);
+    if (!elem) return;
+
+    delete MODx.loadedRTEs[MODx.loadedRTEs.indexOf(elem.original)];
+    // Target the original element
+    var previous = Ext.get(elem.original);
+    previous.dom.name = elem.name;
+    elem.editor.destroy();
+    Ext.destroy(elem);
+    previous.dom.style.display = 'block';
+};
+
 MODx.afterTVLoad = function() {
     var els = Ext.query('.modx-richtext');
     Ext.each(els, function(id) {
         MODx.loadRTE(id);
+    });
+};
+
+MODx.unloadTVRTE = function() {
+    var els = Ext.query('.modx-richtext');
+    Ext.each(els, function(id) {
+        MODx.unloadRTE(id);
     });
 };
