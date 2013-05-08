@@ -19,9 +19,6 @@ if ($modx->getOption('which_editor', null, 'CKEditor') !== 'CKEditor' || !$modx-
     return;
 }
 
-//$ckeditor = $modx->getService('ckeditor', 'CKEditor', $modx->getOption('ckeditor.core_path', null, $modx->getOption('core_path').'components/ckeditor/') . 'model/ckeditor/');
-//$ckeditor->initialize();
-
 switch ($modx->event->name) {
     case 'OnRichTextEditorInit':
         /** @var CKEditor $ckeditor */

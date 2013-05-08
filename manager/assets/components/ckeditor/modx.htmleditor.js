@@ -313,9 +313,11 @@ MODx.loadRTE = function(id) {
         xtype: 'modx-htmleditor',
         width: 'auto',
         height: parseInt(original.dom.style.height) > 200 ? parseInt(original.dom.style.height) : 200,
-        value: original.dom.value || '<p></p>'
+        value: original.dom.value || '<p></p>',
+        name: original.dom.name
     });
     original.dom.style.display = 'none';
+    original.dom.name = '';
 
     htmlEditor.render(original.dom.parentNode);
 
