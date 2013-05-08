@@ -302,8 +302,13 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
 Ext.reg('modx-htmleditor',MODx.ux.CKEditor);
 
 CKEDITOR_BASEPATH = (MODx.config['ckeditor.manager_assets_url'] || (MODx.config['manager_url'] + 'assets/components/ckeditor/')) + 'ckeditor/';
-
+MODx.loadedRTEs = [];
 MODx.loadRTE = function(id) {
+    // Prevent multiple instantiation (mostly for TVs)
+    if (MODx.loadedRTEs.indexOf(id) !== -1) {
+        console.log('already loaded');
+        return;
+    }
     var original = Ext.get(id);
     if (!original) {
         console.log('original element not found');
@@ -320,6 +325,7 @@ MODx.loadRTE = function(id) {
     original.dom.name = '';
 
     htmlEditor.render(original.dom.parentNode);
+    MODx.loadedRTEs.push(id);
 
     var resource = typeof MODx.fireResourceFormChange == 'function';
     htmlEditor.editor.on('key', function(e) {
