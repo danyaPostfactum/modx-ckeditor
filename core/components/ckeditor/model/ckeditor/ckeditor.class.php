@@ -27,9 +27,8 @@ class CKEditor {
         $this->config = array_merge(array(
             'corePath' => $corePath,
             'managerAssetsUrl' => $managerAssetsUrl,
-        ),$config);
+        ), $config);
 
-        $this->modx->addPackage('ckeditor', $this->config['corePath'].'model/');
         $this->modx->lexicon->load('ckeditor:default');
     }
 

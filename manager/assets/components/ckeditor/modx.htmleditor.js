@@ -301,4 +301,40 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
 
 Ext.reg('modx-htmleditor',MODx.ux.CKEditor);
 
-CKEDITOR_BASEPATH = MODx.config['ckeditor.manager_assets_url'] || (MODx.config['manager_url'] + 'assets/components/ckeditor/') + 'ckeditor/';
+CKEDITOR_BASEPATH = (MODx.config['ckeditor.manager_assets_url'] || (MODx.config['manager_url'] + 'assets/components/ckeditor/')) + 'ckeditor/';
+
+MODx.loadRTE = function(id) {
+    var original = Ext.get(id);
+    if (!original) {
+        console.log('original element not found');
+        return;
+    }
+    var htmlEditor = MODx.load({
+        xtype: 'modx-htmleditor',
+        width: 'auto',
+        height: parseInt(original.dom.style.height) > 200 ? parseInt(original.dom.style.height) : 200,
+        value: original.dom.value || '<p></p>'
+    });
+    original.dom.style.display = 'none';
+
+    htmlEditor.render(original.dom.parentNode);
+
+    var resource = typeof MODx.fireResourceFormChange == 'function';
+    htmlEditor.editor.on('key', function(e) {
+        Ext.defer(function() {
+            original.dom.value = htmlEditor.getValue();
+        }, 10);
+        if (resource) MODx.fireResourceFormChange();
+    });
+    htmlEditor.editor.on('paste', function(e){
+        original.dom.value = htmlEditor.getValue();
+        if (resource) MODx.fireResourceFormChange();
+    });
+};
+
+MODx.afterTVLoad = function() {
+    var els = Ext.query('.modx-richtext');
+    Ext.each(els, function(id) {
+        MODx.loadRTE(id);
+    });
+};
