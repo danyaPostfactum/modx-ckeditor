@@ -78,8 +78,12 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
         //keystrokes:             [], // TODO !!!
         removePlugins:          MODx.config['ckeditor.remove_plugins'] || '',
         stylesSet:              MODx.config['ckeditor.styles_set'] ? (function () {
-          var out;
-          try { out = JSON.parse(MODx.config['ckeditor.styles_set']) } catch(e) { out = 'default'; }
+          var out = MODx.config['ckeditor.styles_set'];
+          try {
+            out = JSON.parse(out);
+          } catch(e) {
+            out = out;
+          }
           return out;
         })() : 'default',
         startupMode:            MODx.config['ckeditor.startup_mode'] || 'wysiwyg',
