@@ -84,7 +84,7 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
         dialog_backgroundCoverColor: 'silver',
         dialog_backgroundCoverOpacity: '0.5',
         magicline_putEverywhere: true,
-        menu_groups: 'clipboard,table,anchor,link,image', // TODO !!!
+        //menu_groups: 'clipboard,table,anchor,link,image', // TODO !!!
         toolbarCanCollapse: true,
         coreStyles_strike: {element: 's', overrides: 'strike'}
     },
@@ -94,7 +94,8 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
 
         MODx.ux.CKEditor.superclass.onRender.call(this, ct, position);
 
-        var editor = this.editor
+        var component = this;
+        var editor = this.editor;
 
         var updateButton = null;
 
@@ -213,14 +214,6 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
 
             menu.render(Ext.get('body'));
 
-
-            var onMouseOver = function(e){
-                if (Ext.dd.DragDropMgr.dragCurrent && editor.mode == 'wysiwyg') {
-                    dropTarget._notifyEnter();
-                    ddTarget.un('mouseover', onMouseOver);
-                }
-            };
-            ddTarget.on('mouseover', onMouseOver);
             var dropTarget = new Ext.dd.DropTarget(ddTargetEl, {
                 ddGroup: 'modx-treedrop-dd'
 
@@ -294,6 +287,18 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
                     }
                     return true;
                 }
+            });
+
+            var onMouseOver = function(e){
+                if (Ext.dd.DragDropMgr.dragCurrent && editor.mode == 'wysiwyg') {
+                    dropTarget._notifyEnter();
+                    ddTarget.un('mouseover', onMouseOver);
+                }
+            };
+            ddTarget.on('mouseover', onMouseOver);
+
+            component.on('destroy', function() {
+                dropTarget.destroy();
             });
         });
     }
