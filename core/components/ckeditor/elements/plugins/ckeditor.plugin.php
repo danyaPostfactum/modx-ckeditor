@@ -43,7 +43,7 @@ if ($modx->event->name == 'OnDocFormPrerender') {
     $modx->controller->addHtml('<script>'."
         Ext.onReady(function() {
             var textAreas = Ext.query('$selector');
-            textAreas.forEach(function(textArea){
+            Ext.each(textAreas, function(textArea){
                 var htmlEditor = MODx.load({
                     xtype: 'modx-htmleditor',
                     width: 'auto',
