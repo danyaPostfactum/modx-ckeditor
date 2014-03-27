@@ -34,32 +34,17 @@ if ($modx->event->name == 'OnDocFormPrerender') {
     $richText = $modx->controller->resourceArray['richtext'];
     $classKey = $modx->controller->resourceArray['class_key'];
 
-    if ($richText && !in_array($classKey, array('modStaticResource','modSymLink','modWebLink','modXMLRPCResource'))) {
-        $selector = '#ta, .modx-richtext';
-    } else {
-        $selector = '.modx-richtext';
-    }
+    $richText = $richText && !in_array($classKey, array('modStaticResource','modSymLink','modWebLink','modXMLRPCResource'));
 
-    $modx->controller->addHtml('<script>'."
+    $script = 'MODx.ux.CKEditor.replaceTextAreas(Ext.query(".modx-richtext"));';
+    if ($richText)
+        $script .= 'MODx.ux.CKEditor.replaceComponent("ta");';
+
+    $modx->controller->addHtml('<script>
         Ext.onReady(function() {
-            var textAreas = Ext.query('$selector');
-            Ext.each(textAreas, function(textArea){
-                var htmlEditor = MODx.load({
-                    xtype: 'modx-htmleditor',
-                    width: 'auto',
-                    height: parseInt(textArea.style.height) || 200,
-                    name: textArea.name,
-                    value: textArea.value || '<p></p>'
-                });
-
-                textArea.name = '';
-                textArea.style.display = 'none';
-
-                htmlEditor.render(textArea.parentNode);
-                htmlEditor.editor.on('key', function(e){ MODx.fireResourceFormChange() });
-            });
+            '. $script .'
         });
-    ".'</script>');
+    </script>');
 }
 
 return;

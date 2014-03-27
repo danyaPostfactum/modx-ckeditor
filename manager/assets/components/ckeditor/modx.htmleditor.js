@@ -65,6 +65,7 @@ Ext.reg('ckeditor', Ext.ux.CKEditor);
 Ext.namespace('MODx.ux');
 
 MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
+    droppable: false,
     editorConfig: {
         baseHref:               MODx.config['site_url'],
         contentsCss:            MODx.config['editor_css_path'] || '',
@@ -74,7 +75,7 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
         toolbar:                MODx.config['ckeditor.toolbar'] ? JSON.parse(MODx.config['ckeditor.toolbar']) : null,
         extraPlugins:           MODx.config['ckeditor.extra_plugins'] || '',
         disableObjectResizing:  MODx.config['ckeditor.object_resizing'] == false,
-        keystrokes:             [], // TODO !!!
+        //keystrokes:             [], // TODO !!!
         startupMode:            MODx.config['ckeditor.startup_mode'] || 'wysiwyg',
         undoStackSize:          MODx.config['ckeditor.undo_size'] || 100,
         entities:           false,
@@ -86,7 +87,6 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
         magicline_putEverywhere: true,
         //menu_groups: 'clipboard,table,anchor,link,image', // TODO !!!
         toolbarCanCollapse: true,
-        coreStyles_strike: {element: 's', overrides: 'strike'}
     },
 
     onRender: function (ct, position) {
@@ -94,32 +94,32 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
 
         MODx.ux.CKEditor.superclass.onRender.call(this, ct, position);
 
-        var component = this;
-        var editor = this.editor;
-
-        var updateButton = null;
-
-        (function(){
+        var updateButton = (function(){
             var pageButtons = MODx.activePage ? MODx.activePage.buttons : {};
-
             for (var button in pageButtons) {
                 if (pageButtons[button].process == 'update') {
-                    updateButton = pageButtons[button];
-                    break;
+                    return pageButtons[button];
                 }
             }
+            return null;
         })();
 
-        editor.addCommand( '_save', {
+        this.editor.addCommand( '_save', {
             exec: function( editor ) {
                 if (updateButton) {
                     MODx.activePage.ab.handleClick(updateButton);
                 }
             }
         } );
-        editor.setKeystroke( CKEDITOR.CTRL + 83, '_save' );
+        this.editor.setKeystroke( CKEDITOR.CTRL + 83, '_save' );
 
+        if (this.droppable)
+            this.makeDroppable();
+    },
 
+    makeDroppable: function() {
+        var component = this;
+        var editor = this.editor;
         editor.on('uiReady', function(){
             var ddTarget = new Ext.Element(editor.container.$);
             var ddTargetEl = ddTarget.dom;
@@ -135,6 +135,14 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
 
             var insertion = {};
             var insertionHandler = {
+                insertText: function(text) {
+                    switch (editor.mode)
+                    {
+                        case 'wysiwyg':
+                            editor.insertText(text);
+                    }
+                    editor.focus();
+                },
                 insertLink: function(link, text) {
                     switch (editor.mode)
                     {
@@ -158,23 +166,18 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
                     }
                     editor.focus();
                 },
-                insertText: function(text) {
-                    switch (editor.mode)
-                    {
-                        case 'wysiwyg':
-                            editor.insertText(text);
-                    }
-                    editor.focus();
-                },
-                insertObject: function(link, text, type) {
+                insertObject: function(link, type) {
                     var element;
                     switch (type)
                     {
                         case 'image':
-                            element = {tagName: 'img', attributes: {src: link, alt: text}};
+                            element = {tagName: 'img', attributes: {src: link, alt: ''}};
                             break;
-                        case 'iframe':
-                            element = {tagName: 'iframe', attributes: {src: link}};
+                        case 'audio':
+                            element = {tagName: 'audio', attributes: {src: link, controls: ''}};
+                            break;
+                        case 'video':
+                            element = {tagName: 'video', attributes: {src: link, controls: ''}};
                             break;
                     }
                     switch (editor.mode)
@@ -188,31 +191,6 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
                     editor.focus();
                 }
             };
-
-            var menu = new Ext.menu.Menu({
-                items: [
-                    {
-                        text: _('ui_ckeditor.insert_object_name'),
-                        handler: function(){
-                            insertionHandler.insertText(insertion.text);
-                        }
-                    },
-                    {
-                        text: _('ui_ckeditor.insert_object_link'),
-                        handler: function(){
-                            insertionHandler.insertLink(insertion.link, insertion.text);
-                        }
-                    },
-                    {
-                        text: _('ui_ckeditor.insert_object'),
-                        handler: function() {
-                            insertionHandler.insertObject(insertion.link, insertion.text, insertion.type);
-                        }
-                    }
-                ]
-            });
-
-            menu.render(Ext.get('body'));
 
             var dropTarget = new Ext.dd.DropTarget(ddTargetEl, {
                 ddGroup: 'modx-treedrop-dd'
@@ -237,7 +215,6 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
                         case 'modResource':
                             insertion.link = '[[~'+data.node.attributes.pk+']]';
                             insertion.text = data.node.text.replace(/\s*<.*>.*<.*>/, '');
-                            insertion.type = 'iframe';
                             break;
                         case 'snippet': win = true; break;
                         case 'chunk': win = true; break;
@@ -249,13 +226,16 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
                                 'png': 'image',
                                 'gif': 'image',
                                 'svg': 'image',
-                                'html': 'iframe',
-                                'htm': 'iframe'
-                            }
+                                'ogg': 'audio',
+                                'mp3': 'audio',
+                                'ogv': 'video',
+                                'webm': 'video',
+                                'mp4': 'video'
+                            };
                             var ext = data.node.attributes.text.substring(data.node.attributes.text.lastIndexOf('.')+1);
                             insertion.link = data.node.attributes.url;
                             insertion.text = data.node.attributes.text;
-                            insertion.type = types[ext] || 'iframe';
+                            insertion.type = types[ext];
                             break;
                         default:
                             var dh = Ext.getCmp(data.node.attributes.type+'-drop-handler');
@@ -270,7 +250,6 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
                                 });
                             }
                             return false;
-                            break;
                     }
                     if (win) {
                         MODx.loadInsertElement({
@@ -283,7 +262,10 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
                             ,onInsert: insertionHandler.insertText
                         });
                     } else {
-                        menu.showAt(e.xy);
+                        if (insertion.type)
+                            insertionHandler.insertObject(insertion.link, insertion.type);
+                        else
+                            insertionHandler.insertLink(insertion.link, insertion.text);
                     }
                     return true;
                 }
@@ -301,9 +283,50 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
                 dropTarget.destroy();
             });
         });
+
     }
 });
 
-Ext.reg('modx-htmleditor',MODx.ux.CKEditor);
+MODx.ux.CKEditor.replaceComponent = function(id) {
+    var textArea = Ext.getCmp('ta');
+
+    var htmlEditor = MODx.load({
+        xtype: 'modx-htmleditor',
+        width: 'auto',
+        height: parseInt(textArea.height, 10) || 200,
+        name: textArea.name,
+        value: textArea.getValue() || '<p></p>',
+        droppable: true
+    });
+
+    textArea.el.dom.removeAttribute('name');
+    textArea.el.dom.style.display = 'none';
+    textArea.on('destroy', function() {
+        htmlEditor.destroy();
+    });
+
+    htmlEditor.render(textArea.el.parent().dom);
+    htmlEditor.editor.on('change', function(e){ MODx.fireResourceFormChange(); });
+};
+
+MODx.ux.CKEditor.replaceTextAreas = function(textAreas) {
+    Ext.each(textAreas, function(textArea){
+        var htmlEditor = MODx.load({
+            xtype: 'modx-htmleditor',
+            width: 'auto',
+            height: parseInt(textArea.style.height, 10) || 200,
+            name: textArea.name,
+            value: textArea.value || '<p></p>'
+        });
+
+        textArea.removeAttribute(name);
+        textArea.style.display = 'none';
+
+        htmlEditor.render(textArea.parentNode);
+        htmlEditor.editor.on('change', function(e){ MODx.fireResourceFormChange(); });
+    });
+};
+
+Ext.reg('modx-htmleditor', MODx.ux.CKEditor);
 
 CKEDITOR_BASEPATH = MODx.config['ckeditor.manager_assets_url'] || (MODx.config['manager_url'] + 'assets/components/ckeditor/') + 'ckeditor/';
