@@ -9,7 +9,6 @@ Ext.ux.CKEditor = function(config){
 
 };
 
-
 Ext.extend(Ext.ux.CKEditor, Ext.form.TextArea,  {
 
     editorConfig: {},
@@ -72,14 +71,27 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
         skin:                   MODx.config['ckeditor.skin'] || 'moono',
         uiColor:                MODx.config['ckeditor.ui_color'] || '#DDDDDD',
         toolbar:                MODx.config['ckeditor.toolbar'] ? JSON.parse(MODx.config['ckeditor.toolbar']) : null,
-        extraPlugins:           MODx.config['ckeditor.extra_plugins'] || '',
+        extraPlugins:           MODx.config['ckeditor.extra_plugins'].replace(' ', '') || '',
+        removePlugins:          MODx.config['ckeditor.remove_plugins'].replace(' ', '') || '',
+        disableNativeTableHandles: MODx.config['ckeditor.native_table_handles'] == false,
         disableObjectResizing:  MODx.config['ckeditor.object_resizing'] == false,
+        stylesSet:              MODx.config['ckeditor.styles_set'] ? (function () {
+          var out = MODx.config['ckeditor.styles_set'];
+          try {
+            out = JSON.parse(out);
+          } catch(e) {
+            out = out;
+          }
+          return out;
+        })() : 'default',
+        bodyClass:              MODx.config['ckeditor.body_class'] || '',
+        bodyId:                 MODx.config['ckeditor.body_id'] || '',
         keystrokes:             [], // TODO !!!
         startupMode:            MODx.config['ckeditor.startup_mode'] || 'wysiwyg',
         undoStackSize:          MODx.config['ckeditor.undo_size'] || 100,
         entities:           false,
-        autoParagraph:      false,
-        disableNativeSpellChecker: false,
+        autoParagraph:          MODx.config['ckeditor.auto_paragraph'] == true,
+        disableNativeSpellChecker: MODx.config['ckeditor.native_spellchecker'] == false,
         filebrowserBrowseUrl: MODx.config['manager_url'] + 'index.php?a=' + MODx.action['browser'] + '&source=' + MODx.config['default_media_source'], // TODO !!!
         dialog_backgroundCoverColor: 'silver',
         dialog_backgroundCoverOpacity: '0.5',
@@ -94,9 +106,24 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
 
         MODx.ux.CKEditor.superclass.onRender.call(this, ct, position);
 
-        var editor = this.editor
+        var editor = this.editor;
 
         var updateButton = null;
+
+        var getCKEditorEnterModeConst = function (obj, prop, def) {
+            var i,
+                elArr = ['P','BR','DIV'],
+                out = obj['ENTER_' + def]
+            for (i=0;i<elArr.length;i++) {
+                if (prop.toUpperCase() === elArr[i]) {
+                    out = obj['ENTER_' + elArr[i]];
+                }
+            }
+            return out;
+        };
+
+        editor.config.enterMode = getCKEditorEnterModeConst(CKEDITOR, MODx.config['ckeditor.enter_mode'], 'P');
+        editor.config.shiftEnterMode = getCKEditorEnterModeConst(CKEDITOR, MODx.config['ckeditor.shift_enter_mode'], 'BR');
 
         (function(){
             var pageButtons = MODx.activePage ? MODx.activePage.buttons : {};

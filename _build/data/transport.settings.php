@@ -57,4 +57,85 @@ $settings['object_resizing']->fromArray(array(
         'area' => 'general'
     ),'',true,true);
 
+$settings['styles_set']= $modx->newObject('modSystemSetting');
+$settings['styles_set']->fromArray(array(
+        'key' => 'ckeditor.styles_set',
+        'xtype' => 'textarea',
+        'value' => 'default',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
+$settings['body_class']= $modx->newObject('modSystemSetting');
+$settings['body_class']->fromArray(array(
+        'key' => 'ckeditor.body_class',
+        'xtype' => 'textfield',
+        'value' => '',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
+$settings['body_id']= $modx->newObject('modSystemSetting');
+$settings['body_id']->fromArray(array(
+        'key' => 'ckeditor.body_id',
+        'xtype' => 'textfield',
+        'value' => '',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
+$settings['remove_plugins']= $modx->newObject('modSystemSetting');
+$settings['remove_plugins']->fromArray(array(
+        'key' => 'ckeditor.remove_plugins',
+        'xtype' => 'textfield',
+        'value' => '',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
+$settings['native_table_handles']= $modx->newObject('modSystemSetting');
+$settings['native_table_handles']->fromArray(array(
+        'key' => 'ckeditor.native_table_handles',
+        'xtype' => 'combo-boolean',
+        'value' => '0',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
+$settings['enter_mode']= $modx->newObject('modSystemSetting');
+$settings['enter_mode']->fromArray(array(
+        'key' => 'ckeditor.enter_mode',
+        'xtype' => 'textfield',
+        'value' => 'P',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
+$settings['shift_enter_mode']= $modx->newObject('modSystemSetting');
+$settings['shift_enter_mode']->fromArray(array(
+        'key' => 'ckeditor.shift_enter_mode',
+        'xtype' => 'textfield',
+        'value' => 'BR',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
+$settings['auto_paragraph']= $modx->newObject('modSystemSetting');
+$settings['auto_paragraph']->fromArray(array(
+        'key' => 'ckeditor.auto_paragraph',
+        'xtype' => 'combo-boolean',
+        'value' => '0',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
+$settings['native_spellchecker']= $modx->newObject('modSystemSetting');
+$settings['native_spellchecker']->fromArray(array(
+        'key' => 'ckeditor.native_spellchecker',
+        'xtype' => 'combo-boolean',
+        'value' => '1',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
 return $settings;
