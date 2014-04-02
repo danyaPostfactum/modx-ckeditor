@@ -90,6 +90,7 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
     },
 
     onRender: function (ct, position) {
+        Ext.get('modx-content').setStyle('height', 'auto');
         this.editorConfig.height = this.height;
 
         MODx.ux.CKEditor.superclass.onRender.call(this, ct, position);
