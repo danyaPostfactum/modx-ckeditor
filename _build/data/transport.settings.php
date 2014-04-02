@@ -17,7 +17,7 @@ $settings['toolbar']->fromArray(array(
         'value' => '[
     { "name": "clipboard", "groups": [ "clipboard", "undo" ], "items": [ "Cut", "Copy", "Paste", "PasteText", "PasteFromWord", "-", "Undo", "Redo" ] },
     { "name": "links", "items": [ "Link", "Unlink"] },
-    { "name": "insert", "items": [ "Image", "Flash", "Table", "HorizontalRule", "SpecialChar", "Iframe" ] },
+    { "name": "insert", "items": [ "Image", "Youtube", "Flash", "Table", "HorizontalRule", "SpecialChar", "Iframe" ] },
     { "name": "editing", "items": [ "Find", "Replace" ] },
     { "name": "tools", "items": [ "Maximize", "ShowBlocks" ] },
     { "name": "document", "groups": [ "mode" ], "items": [ "Source"] },
