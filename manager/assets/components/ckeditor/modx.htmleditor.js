@@ -87,6 +87,9 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
         magicline_putEverywhere: true,
         //menu_groups: 'clipboard,table,anchor,link,image', // TODO !!!
         toolbarCanCollapse: true,
+        autocorrect_dash: MODx.config['ckeditor.autocorrect_dash'] || '—',
+        autocorrect_doubleQuotes: MODx.config['ckeditor.autocorrect_double_quotes'] || '«»',
+        autocorrect_singleQuotes: MODx.config['ckeditor.autocorrect_single_quotes'] || '„‟'
     },
 
     onRender: function (ct, position) {

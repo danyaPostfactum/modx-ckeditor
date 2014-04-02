@@ -57,4 +57,31 @@ $settings['object_resizing']->fromArray(array(
         'area' => 'general'
     ),'',true,true);
 
+$settings['autocorrect_dash']= $modx->newObject('modSystemSetting');
+$settings['autocorrect_dash']->fromArray(array(
+        'key' => 'ckeditor.autocorrect_dash',
+        'xtype' => 'textfield',
+        'value' => '—',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
+$settings['autocorrect_double_quotes']= $modx->newObject('modSystemSetting');
+$settings['autocorrect_double_quotes']->fromArray(array(
+        'key' => 'ckeditor.autocorrect_double_quotes',
+        'xtype' => 'textfield',
+        'value' => '«»',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
+$settings['autocorrect_single_quotes']= $modx->newObject('modSystemSetting');
+$settings['autocorrect_single_quotes']->fromArray(array(
+        'key' => 'ckeditor.autocorrect_single_quotes',
+        'xtype' => 'textfield',
+        'value' => '„‟',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
 return $settings;
