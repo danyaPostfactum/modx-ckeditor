@@ -101,7 +101,10 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
         var updateButton = (function(){
             var pageButtons = MODx.activePage ? MODx.activePage.buttons : {};
             for (var button in pageButtons) {
-                if (pageButtons[button].process == 'update') {
+                var process = pageButtons[button].process;
+                if (!process)
+                    continue;
+                if (process.split('/').pop() == 'update') {
                     return pageButtons[button];
                 }
             }
