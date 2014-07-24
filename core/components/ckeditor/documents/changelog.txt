@@ -1,5 +1,13 @@
 Changelog for CKEditor integration into MODx Revolution.
 
+CKEditor 1.1.1
+====================================
+- Fixed AjaxManager compatibility (tree drag'drop bug)
+- Added de language (settings localization: miduku)
+- Added plugins: youtube, wordcount, autocorrect
+- Simplified drag'n'drop from tree (remove dnd context menu)
+- IE8 support
+
 CKEditor 1.1.0
 ====================================
 - MODx file browser integration

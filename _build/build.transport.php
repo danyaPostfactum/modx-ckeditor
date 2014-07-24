@@ -12,8 +12,8 @@ set_time_limit(0);
 /* define version */
 define('PKG_NAME','CKEditor');
 define('PKG_NAMESPACE','ckeditor');
-define('PKG_VERSION','1.1.0');
-define('PKG_RELEASE','rc1');
+define('PKG_VERSION','1.1.1');
+define('PKG_RELEASE','pl');
 
 /* define sources */
 $root = dirname(dirname(__FILE__)).'/';
