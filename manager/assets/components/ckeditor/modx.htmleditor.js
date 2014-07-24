@@ -275,6 +275,9 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
                 }
             });
 
+            dropTarget.addToGroup('modx-treedrop-elements-dd');
+            dropTarget.addToGroup('modx-treedrop-sources-dd');
+
             var onMouseOver = function(e){
                 if (Ext.dd.DragDropMgr.dragCurrent && editor.mode == 'wysiwyg') {
                     dropTarget._notifyEnter();
