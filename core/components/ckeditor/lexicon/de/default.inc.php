@@ -20,7 +20,9 @@ $_lang['setting_ckeditor.extra_plugins'] = 'Extra-Plugins';
 $_lang['setting_ckeditor.extra_plugins_desc'] = 'Liste von Plugins, getrennt mit «,». Alle Plugins müssen im Verzeichnis «{manager_path}/assets/components/ckeditor/ckeditor/plugins/» liegen.';
 $_lang['setting_ckeditor.object_resizing'] = 'Objekt-Größenänderung im Editor';
 $_lang['setting_ckeditor.object_resizing_desc'] = 'Objekt-Größenänderung im Editor aktivieren (Bilder, Tabellen).';
-
-$_lang['ui_ckeditor.insert_object_link'] = 'Objekt-Link einfügen';
-$_lang['ui_ckeditor.insert_object_name'] = 'Objekt-Name einfügen';
-$_lang['ui_ckeditor.insert_object'] = 'Objekt einfügen';
+$_lang['setting_ckeditor.autocorrect_dash'] = 'Gedankenstrich';
+$_lang['setting_ckeditor.autocorrect_dash_desc'] = 'A dash character to automatically replace typed hyphens with.';
+$_lang['setting_ckeditor.autocorrect_double_quotes'] = 'Anführungszeichen';
+$_lang['setting_ckeditor.autocorrect_double_quotes_desc'] = 'A pair of opening and closing marks to convert typewriter quotation marks to (smart quotes). In english writing “curly quotes” are used.';
+$_lang['setting_ckeditor.autocorrect_single_quotes'] = 'einfache Anführungszeichen';
+$_lang['setting_ckeditor.autocorrect_single_quotes_desc'] = 'A pair of opening and closing marks to convert typewriter apostrophes to (smart quotes). In english writing ‘curly quotes’ are used.';

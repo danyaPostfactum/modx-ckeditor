@@ -79,7 +79,7 @@ $settings['autocorrect_single_quotes']= $modx->newObject('modSystemSetting');
 $settings['autocorrect_single_quotes']->fromArray(array(
         'key' => 'ckeditor.autocorrect_single_quotes',
         'xtype' => 'textfield',
-        'value' => '„‟',
+        'value' => '„“',
         'namespace' => 'ckeditor',
         'area' => 'general'
     ),'',true,true);
