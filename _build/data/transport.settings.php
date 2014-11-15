@@ -30,6 +30,15 @@ $settings['toolbar']->fromArray(array(
 		'area' => 'general'
     ),'',true,true);
 
+$settings['format_tags']= $modx->newObject('modSystemSetting');
+$settings['format_tags']->fromArray(array(
+        'key' => 'ckeditor.format_tags',
+        'xtype' => 'textfield',
+        'value' => 'p;h1;h2;h3;h4;h5;h6;pre;address;div',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
 $settings['skin']= $modx->newObject('modSystemSetting');
 $settings['skin']->fromArray(array(
         'key' => 'ckeditor.skin',
