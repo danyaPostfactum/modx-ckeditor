@@ -73,6 +73,7 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
         skin:                   MODx.config['ckeditor.skin'] || 'moono',
         uiColor:                MODx.config['ckeditor.ui_color'] || '#DDDDDD',
         toolbar:                MODx.config['ckeditor.toolbar'] ? JSON.parse(MODx.config['ckeditor.toolbar']) : null,
+        toolbarGroups:          MODx.config['ckeditor.toolbar_groups'] ? JSON.parse(MODx.config['ckeditor.toolbar_groups']) : null,
         format_tags:            MODx.config['ckeditor.format_tags'] ? MODx.config['ckeditor.format_tags'] : 'p;h1;h2;h3;h4;h5;h6;pre;address;div',
         extraPlugins:           MODx.config['ckeditor.extra_plugins'] || '',
         disableObjectResizing:  MODx.config['ckeditor.object_resizing'] == false,

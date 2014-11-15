@@ -14,20 +14,18 @@ $settings['toolbar']= $modx->newObject('modSystemSetting');
 $settings['toolbar']->fromArray(array(
         'key' => 'ckeditor.toolbar',
         'xtype' => 'textarea',
-        'value' => '[
-    { "name": "clipboard", "groups": [ "clipboard", "undo" ], "items": [ "Cut", "Copy", "Paste", "PasteText", "PasteFromWord", "-", "Undo", "Redo" ] },
-    { "name": "links", "items": [ "Link", "Unlink"] },
-    { "name": "insert", "items": [ "Image", "Youtube", "Flash", "Table", "HorizontalRule", "SpecialChar", "Iframe" ] },
-    { "name": "editing", "items": [ "Find", "Replace" ] },
-    { "name": "tools", "items": [ "Maximize", "ShowBlocks" ] },
-    { "name": "document", "groups": [ "mode" ], "items": [ "Source"] },
-    "/",
-    { "name": "basicstyles", "groups": [ "basicstyles", "cleanup" ], "items": [ "Bold", "Italic", "Subscript", "Superscript", "-", "RemoveFormat" ] },
-    { "name": "paragraph", "groups": [ "list", "indent", "blocks", "align" ], "items": [ "NumberedList", "BulletedList", "-", "Outdent", "Indent", "-", "Blockquote", "CreateDiv", "-", "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock" ] },
-    { "name": "styles", "items": [ "Styles", "Format"] }
-]',
+        'value' => '',
         'namespace' => 'ckeditor',
 		'area' => 'general'
+    ),'',true,true);
+
+$settings['toolbar_groups']= $modx->newObject('modSystemSetting');
+$settings['toolbar_groups']->fromArray(array(
+        'key' => 'ckeditor.toolbar_groups',
+        'xtype' => 'textarea',
+        'value' => '[{"name":"document","groups":["mode","document","doctools"]},{"name":"clipboard","groups":["clipboard","undo"]},{"name":"editing","groups":["find","selection","spellchecker"]},{"name":"links"},{"name":"insert"},{"name":"forms"},"/",{"name":"basicstyles","groups":["basicstyles","cleanup"]},{"name":"paragraph","groups":["list","indent","blocks","align","bidi"]},{"name":"styles"},{"name":"colors"},{"name":"tools"},{"name":"others"},{"name":"about"}]',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
     ),'',true,true);
 
 $settings['format_tags']= $modx->newObject('modSystemSetting');
