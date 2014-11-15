@@ -1,0 +1,7 @@
+- Template support
+- Predefined toolbars
+- Class list
+- More config (spellchecker, stylesset)
+- Typography plugin
+- MODX tag protection
+- Context-specific options
