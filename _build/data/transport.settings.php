@@ -84,4 +84,13 @@ $settings['autocorrect_single_quotes']->fromArray(array(
         'area' => 'general'
     ),'',true,true);
 
+$settings['styles_set']= $modx->newObject('modSystemSetting');
+$settings['styles_set']->fromArray(array(
+        'key' => 'ckeditor.styles_set',
+        'xtype' => 'textarea',
+        'value' => 'default',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
 return $settings;

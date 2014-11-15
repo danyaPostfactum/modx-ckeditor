@@ -76,6 +76,11 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
         extraPlugins:           MODx.config['ckeditor.extra_plugins'] || '',
         disableObjectResizing:  MODx.config['ckeditor.object_resizing'] == false,
         //keystrokes:             [], // TODO !!!
+        stylesSet:              MODx.config['ckeditor.styles_set'] ? (function () {
+          var out;
+          try { out = JSON.parse(MODx.config['ckeditor.styles_set']) } catch(e) { out = 'default'; }
+          return out;
+        })() : 'default',
         startupMode:            MODx.config['ckeditor.startup_mode'] || 'wysiwyg',
         undoStackSize:          MODx.config['ckeditor.undo_size'] || 100,
         entities:           false,

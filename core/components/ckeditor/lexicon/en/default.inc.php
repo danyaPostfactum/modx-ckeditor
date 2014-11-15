@@ -26,3 +26,5 @@ $_lang['setting_ckeditor.autocorrect_double_quotes'] = 'Double quotes';
 $_lang['setting_ckeditor.autocorrect_double_quotes_desc'] = 'A pair of opening and closing marks to convert typewriter quotation marks to (smart quotes). In english writing “curly quotes” are used.';
 $_lang['setting_ckeditor.autocorrect_single_quotes'] = 'Single quotes';
 $_lang['setting_ckeditor.autocorrect_single_quotes_desc'] = 'A pair of opening and closing marks to convert typewriter apostrophes to (smart quotes). In english writing ‘curly quotes’ are used.';
+$_lang['setting_ckeditor.styles_set'] = 'CSS styles set';
+$_lang['setting_ckeditor.styles_set_desc'] = 'The "styles definition set" to use in the editor. Provide a JSON string or a the name of a predefined Styles Set as a string. Reference: http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.stylesSet';
