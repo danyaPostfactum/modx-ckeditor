@@ -76,6 +76,7 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
         extraPlugins:           MODx.config['ckeditor.extra_plugins'] || '',
         disableObjectResizing:  MODx.config['ckeditor.object_resizing'] == false,
         //keystrokes:             [], // TODO !!!
+        removePlugins:          MODx.config['ckeditor.remove_plugins'] || '',
         stylesSet:              MODx.config['ckeditor.styles_set'] ? (function () {
           var out;
           try { out = JSON.parse(MODx.config['ckeditor.styles_set']) } catch(e) { out = 'default'; }
