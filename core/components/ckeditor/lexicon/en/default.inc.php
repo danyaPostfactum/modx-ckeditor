@@ -30,3 +30,5 @@ $_lang['setting_ckeditor.styles_set'] = 'CSS styles set';
 $_lang['setting_ckeditor.styles_set_desc'] = 'The "styles definition set" to use in the editor. Provide a JSON string or a the name of a predefined Styles Set as a string. Reference: http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.stylesSet';
 $_lang['setting_ckeditor.remove_plugins'] = 'Remove plugins';
 $_lang['setting_ckeditor.remove_plugins_desc'] = 'List of plugins to exclude, separated by «,».';
+$_lang['setting_ckeditor.native_spellchecker'] = 'Native spellchecker';
+$_lang['setting_ckeditor.native_spellchecker_desc'] = 'Enables the built-in words spell checker if browser provides one.';

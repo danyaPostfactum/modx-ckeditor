@@ -86,7 +86,7 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
         undoStackSize:          MODx.config['ckeditor.undo_size'] || 100,
         entities:           false,
         autoParagraph:      false,
-        disableNativeSpellChecker: false,
+        disableNativeSpellChecker: MODx.config['ckeditor.native_spellchecker'] == false,
         filebrowserBrowseUrl: MODx.config['manager_url'] + 'index.php?a=' + MODx.action['browser'] + '&source=' + MODx.config['default_media_source'], // TODO !!!
         dialog_backgroundCoverColor: 'silver',
         dialog_backgroundCoverOpacity: '0.5',
