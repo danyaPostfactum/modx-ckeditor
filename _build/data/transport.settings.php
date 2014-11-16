@@ -104,7 +104,7 @@ $settings['remove_plugins']= $modx->newObject('modSystemSetting');
 $settings['remove_plugins']->fromArray(array(
         'key' => 'ckeditor.remove_plugins',
         'xtype' => 'textfield',
-        'value' => '',
+        'value' => 'forms,smiley,autogrow,liststyle,justify,pagebreak,colorbutton,indentblock,font,newpage,print,save,language,bidi,selectall,preview',
         'namespace' => 'ckeditor',
         'area' => 'general'
     ),'',true,true);
