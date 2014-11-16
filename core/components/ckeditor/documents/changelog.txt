@@ -1,5 +1,14 @@
 Changelog for CKEditor integration into MODx Revolution.
 
+CKEditor 1.2.0
+====================================
+- Fixed MODx 2.3 compatibility
+- Added new settings (stylesSet, removePlugins, toolbarGroups, formatTags, nativeSpellchecker) (thanks to MokoJumbie and exside [Lukas Zahnd])
+- Addes plugins: SCAYT, QuickTable, AutoGrow (disabled by default)
+- Improved AutoCorrect Plugin (settings dialog, bugfixes, other improvements)
+- Fixed Ctrl+Z in Source mode
+- Simplified toolbar configuration (used less painful "toolbarGroups" option rather then "toolbar")
+
 CKEditor 1.1.1
 ====================================
 - Fixed AjaxManager compatibility (tree drag'drop bug)
