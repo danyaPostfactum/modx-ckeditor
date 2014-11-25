@@ -351,4 +351,70 @@ MODx.ux.CKEditor.replaceTextAreas = function(textAreas) {
 
 Ext.reg('modx-htmleditor', MODx.ux.CKEditor);
 
-CKEDITOR_BASEPATH = MODx.config['ckeditor.manager_assets_url'] || (MODx.config['manager_url'] + 'assets/components/ckeditor/') + 'ckeditor/';
+CKEDITOR_BASEPATH = (MODx.config['ckeditor.manager_assets_url'] || (MODx.config['manager_url'] + 'assets/components/ckeditor/')) + 'ckeditor/';
+MODx.loadedRTEs = [];
+MODx.loadRTE = function(id) {
+    // Prevent multiple instantiation (mostly for TVs)
+    if (MODx.loadedRTEs.indexOf(id) !== -1) {
+        console.log('already loaded');
+        return;
+    }
+    var original = Ext.get(id);
+    if (!original) {
+        console.log('original element not found');
+        return;
+    }
+    var htmlEditor = MODx.load({
+        xtype: 'modx-htmleditor',
+        width: 'auto',
+        height: parseInt(original.dom.style.height) > 200 ? parseInt(original.dom.style.height) : 200,
+        value: original.dom.value || '<p></p>',
+        name: original.dom.name,
+        original: id
+    });
+    original.dom.style.display = 'none';
+    original.dom.name = '';
+
+    htmlEditor.render(original.dom.parentNode);
+    MODx.loadedRTEs.push(id);
+
+    var resource = typeof MODx.fireResourceFormChange == 'function';
+    htmlEditor.editor.on('key', function(e) {
+        Ext.defer(function() {
+            original.dom.value = htmlEditor.getValue();
+        }, 10);
+        if (resource) MODx.fireResourceFormChange();
+    });
+    htmlEditor.editor.on('paste', function(e){
+        original.dom.value = htmlEditor.getValue();
+        if (resource) MODx.fireResourceFormChange();
+    });
+};
+
+MODx.unloadRTE = function(id) {
+    // Get the component
+    var elem = Ext.getCmp(id);
+    if (!elem) return;
+
+    delete MODx.loadedRTEs[MODx.loadedRTEs.indexOf(elem.original)];
+    // Target the original element
+    var previous = Ext.get(elem.original);
+    previous.dom.name = elem.name;
+    elem.editor.destroy();
+    Ext.destroy(elem);
+    previous.dom.style.display = 'block';
+};
+
+MODx.afterTVLoad = function() {
+    var els = Ext.query('.modx-richtext');
+    Ext.each(els, function(id) {
+        MODx.loadRTE(id);
+    });
+};
+
+MODx.unloadTVRTE = function() {
+    var els = Ext.query('.modx-richtext');
+    Ext.each(els, function(id) {
+        MODx.unloadRTE(id);
+    });
+};
