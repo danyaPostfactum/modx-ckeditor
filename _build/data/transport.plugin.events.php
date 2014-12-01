@@ -1,6 +1,13 @@
 <?php
 $events = array();
 
+$events['OnManagerPageBeforeRender'] = $modx->newObject('modPluginEvent');
+$events['OnManagerPageBeforeRender']->fromArray(array(
+    'event' => 'OnManagerPageBeforeRender',
+    'priority' => 0,
+    'propertyset' => 0
+),'',true,true);
+
 $events['OnRichTextEditorRegister'] = $modx->newObject('modPluginEvent');
 $events['OnRichTextEditorRegister']->fromArray(array(
     'event' => 'OnRichTextEditorRegister',

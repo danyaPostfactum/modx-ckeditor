@@ -2,7 +2,7 @@
 /**
  * CKEditor WYSIWYG Editor Plugin
  *
- * Events: OnRichTextEditorRegister, OnRichTextEditorInit, OnRichTextBrowserInit
+ * Events: OnManagerPageBeforeRender, OnRichTextEditorRegister, OnRichTextEditorInit, OnRichTextBrowserInit
  *
  * @var modX $modx
  * @author Danil Kostin <danya.postfactum(at)gmail.com>
@@ -20,10 +20,12 @@ if ($modx->getOption('which_editor', null, 'CKEditor') !== 'CKEditor' || !$modx-
 }
 
 switch ($modx->event->name) {
-    case 'OnRichTextEditorInit':
+    case 'OnManagerPageBeforeRender':
         /** @var CKEditor $ckeditor */
         $ckeditor = $modx->getService('ckeditor', 'CKEditor', $modx->getOption('ckeditor.core_path', null, $modx->getOption('core_path').'components/ckeditor/') . 'model/ckeditor/');
         $ckeditor->initialize();
+        break;
+    case 'OnRichTextEditorInit':
         break;
     case 'OnRichTextBrowserInit':
         $funcNum = $_REQUEST['CKEditorFuncNum'];
