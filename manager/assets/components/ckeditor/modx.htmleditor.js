@@ -1,16 +1,4 @@
-Ext.ux.CKEditor = function(config){
-
-    this.config = config;
-
-    Ext.ux.CKEditor.superclass.constructor.call(this, config);
-    this.on('destroy', function (ct) {
-        ct.destroyInstance();
-    });
-
-};
-
-
-Ext.extend(Ext.ux.CKEditor, Ext.form.TextArea,  {
+Ext.ux.CKEditor = Ext.extend(Ext.form.TextField,  {
 
     editorConfig: {},
 
@@ -26,36 +14,40 @@ Ext.extend(Ext.ux.CKEditor, Ext.form.TextArea,  {
             };
         }
         Ext.form.TextArea.superclass.onRender.call(this, ct, position);
-        this.editor = CKEDITOR.replace(this.id, this.editorConfig);
+        this.editor = CKEDITOR.replace(this.el.dom, this.editorConfig);
     },
 
     onResize: function(width, height) {
         Ext.form.TextArea.superclass.onResize.call(this, width, height);
-        if (CKEDITOR.instances[this.id].is_instance_ready) {
-            CKEDITOR.instances[this.id].resize(width, height);
+        if (this.editor.is_instance_ready) {
+            this.editor.resize(width, height);
         }
     },
 
     setValue : function(value){
         if (!value) value = '&nbsp;';
         Ext.form.TextArea.superclass.setValue.apply(this,arguments);
-        if (CKEDITOR.instances[this.id]) CKEDITOR.instances[this.id].setData( value );
+        if (this.editor) this.editor.setData( value );
     },
 
     getValue : function(){
-        if (CKEDITOR.instances[this.id]) CKEDITOR.instances[this.id].updateElement();
+        if (this.editor) this.editor.updateElement();
         return Ext.form.TextArea.superclass.getValue.call(this);
     },
 
     getRawValue : function(){
-        if (CKEDITOR.instances[this.id]) CKEDITOR.instances[this.id].updateElement();
+        if (this.editor) this.editor.updateElement();
         return Ext.form.TextArea.superclass.getRawValue.call(this);
     },
 
-    destroyInstance: function(){
-        if (CKEDITOR.instances[this.id]) {
-            delete CKEDITOR.instances[this.id];
+    destroy: function(){
+        if (this.rendered) {
+            // CKEditor tries to use removed frame element
+            try {
+                this.editor.destroy();
+            } catch (e) {}
         }
+        Ext.ux.CKEditor.superclass.destroy.call(this);
     }
 
 });
@@ -105,11 +97,17 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
     },
 
     onRender: function (ct, position) {
-        Ext.get('modx-content').setStyle('height', 'auto');
         this.editorConfig.height = this.height;
 
         MODx.ux.CKEditor.superclass.onRender.call(this, ct, position);
 
+        this.addSaveCommand();
+
+        if (this.droppable)
+            this.makeDroppable();
+    },
+
+    addSaveCommand: function() {
         var updateButton = (function(){
             var pageButtons = MODx.activePage ? MODx.activePage.buttons : {};
             for (var button in pageButtons) {
@@ -131,16 +129,13 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
             }
         } );
         this.editor.setKeystroke( CKEDITOR.CTRL + 83, '_save' );
-
-        if (this.droppable)
-            this.makeDroppable();
     },
 
     makeDroppable: function() {
         var component = this;
         var editor = this.editor;
         editor.on('uiReady', function(){
-            var ddTarget = new Ext.Element(editor.container.$);
+            var ddTarget = new Ext.Element(editor.container.$, true);
             var ddTargetEl = ddTarget.dom;
 
             var iframeCover = new CKEDITOR.dom.element('div');
@@ -301,34 +296,45 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
             };
             ddTarget.on('mouseover', onMouseOver);
 
-            component.on('destroy', function() {
+            component.on('beforedestroy', function() {
                 dropTarget.destroy();
+                ddTarget.un('mouseover', onMouseOver);
             });
         });
 
     }
 });
 
-MODx.ux.CKEditor.replaceComponent = function(id) {
-    var textArea = Ext.getCmp('ta');
-
+MODx.ux.CKEditor.replaceElement = function(element) {
     var htmlEditor = MODx.load({
         xtype: 'modx-htmleditor',
         width: 'auto',
-        height: parseInt(textArea.height, 10) || 200,
-        name: textArea.name,
-        value: textArea.getValue() || '<p></p>',
+        height: parseInt(element.height, 10) || 200,
+        applyTo: element,
+        value: element.value || '<p></p>',
         droppable: true
     });
+    element.style.display = 'none';
+    return htmlEditor;
+};
 
-    textArea.el.dom.removeAttribute('name');
-    textArea.el.dom.style.display = 'none';
+MODx.ux.CKEditor.replaceComponent = function(textArea) {
+    if (!(textArea instanceof Ext.form.TextArea))
+        return null;
+    var htmlEditor = this.replaceElement(textArea.el.dom);
+
     textArea.on('destroy', function() {
         htmlEditor.destroy();
     });
 
-    htmlEditor.render(textArea.el.parent().dom);
-    htmlEditor.editor.on('change', function(e){ MODx.fireResourceFormChange(); });
+    htmlEditor.editor.on('change', function() {
+        Ext.defer(function() {
+            //textArea.el.dom.value = htmlEditor.getValue();
+            textArea.fireEvent('change', {});
+        }, 10);
+    });
+
+    return htmlEditor;
 };
 
 MODx.ux.CKEditor.replaceTextAreas = function(textAreas) {
@@ -352,69 +358,64 @@ MODx.ux.CKEditor.replaceTextAreas = function(textAreas) {
 Ext.reg('modx-htmleditor', MODx.ux.CKEditor);
 
 CKEDITOR_BASEPATH = (MODx.config['ckeditor.manager_assets_url'] || (MODx.config['manager_url'] + 'assets/components/ckeditor/')) + 'ckeditor/';
-MODx.loadedRTEs = [];
+
+MODx.loadedRTEs = {};
 MODx.loadRTE = function(id) {
+
+    var element = Ext.get(id);
+    if (element) {
+        id = element.id;
+    }
+
     // Prevent multiple instantiation (mostly for TVs)
-    if (MODx.loadedRTEs.indexOf(id) !== -1) {
-        console.log('already loaded');
-        return;
-    }
-    var original = Ext.get(id);
-    if (!original) {
-        console.log('original element not found');
-        return;
-    }
-    var htmlEditor = MODx.load({
-        xtype: 'modx-htmleditor',
-        width: 'auto',
-        height: parseInt(original.dom.style.height) > 200 ? parseInt(original.dom.style.height) : 200,
-        value: original.dom.value || '<p></p>',
-        name: original.dom.name,
-        original: id
-    });
-    original.dom.style.display = 'none';
-    original.dom.name = '';
+    // if (id in MODx.loadedRTEs) {
+    //     return false;
+    // }
 
-    htmlEditor.render(original.dom.parentNode);
-    MODx.loadedRTEs.push(id);
+    var component = Ext.getCmp(id);
 
-    var resource = typeof MODx.fireResourceFormChange == 'function';
-    htmlEditor.editor.on('key', function(e) {
-        Ext.defer(function() {
-            original.dom.value = htmlEditor.getValue();
-        }, 10);
-        if (resource) MODx.fireResourceFormChange();
-    });
-    htmlEditor.editor.on('paste', function(e){
-        original.dom.value = htmlEditor.getValue();
-        if (resource) MODx.fireResourceFormChange();
-    });
+    var editor;
+    if (component) {
+        editor = MODx.ux.CKEditor.replaceComponent(component);
+    } else if (element) {
+        editor = MODx.ux.CKEditor.replaceElement(element.dom);
+    } else {
+        return false;
+    }
+
+    MODx.loadedRTEs[id] = editor;
+    return true;
 };
 
 MODx.unloadRTE = function(id) {
-    // Get the component
-    var elem = Ext.getCmp(id);
-    if (!elem) return;
-
-    delete MODx.loadedRTEs[MODx.loadedRTEs.indexOf(elem.original)];
-    // Target the original element
-    var previous = Ext.get(elem.original);
-    previous.dom.name = elem.name;
-    elem.editor.destroy();
-    Ext.destroy(elem);
-    previous.dom.style.display = 'block';
+    var element = Ext.get(id);
+    if (!element) {
+        return false;
+    }
+    id = element.id;
+    var editor = MODx.loadedRTEs[id];
+    if (!editor) {
+        return false;
+    }
+    // Do trick to avoid textarea removing
+    editor.rendered = false;
+    editor.editor.destroy();
+    editor.destroy();
+    element.dom.style.display = '';
+    delete MODx.loadedRTEs[id];
+    return true;
 };
 
 MODx.afterTVLoad = function() {
     var els = Ext.query('.modx-richtext');
-    Ext.each(els, function(id) {
-        MODx.loadRTE(id);
+    Ext.each(els, function(element) {
+        MODx.loadRTE(element);
     });
 };
 
 MODx.unloadTVRTE = function() {
     var els = Ext.query('.modx-richtext');
-    Ext.each(els, function(id) {
-        MODx.unloadRTE(id);
+    Ext.each(els, function(element) {
+        MODx.unloadRTE(element);
     });
 };
