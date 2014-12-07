@@ -1,3 +1,5 @@
+(function(){
+
 Ext.ux.CKEditor = Ext.extend(Ext.form.TextField,  {
 
     editorConfig: {},
@@ -14,7 +16,13 @@ Ext.ux.CKEditor = Ext.extend(Ext.form.TextField,  {
             };
         }
         Ext.form.TextArea.superclass.onRender.call(this, ct, position);
-        this.editor = CKEDITOR.replace(this.el.dom, this.editorConfig);
+        // strip undefined values
+        var config = {};
+        for (var prop in this.editorConfig) {
+            if (Ext.isDefined(this.editorConfig[prop]))
+                config[prop] = this.editorConfig[prop];
+        }
+        this.editor = CKEDITOR.replace(this.el.dom, config);
     },
 
     onResize: function(width, height) {
@@ -56,44 +64,59 @@ Ext.reg('ckeditor', Ext.ux.CKEditor);
 
 Ext.namespace('MODx.ux');
 
+function getOption(key, type, defaultValue) {
+    var raw = MODx.config[key];
+    if (!raw)
+        return defaultValue;
+    var types = {
+        'string': String,
+        'boolean': Boolean,
+        'number': Number,
+        'json': JSON.parse
+    };
+    try {
+        return types[type](raw);
+    } catch (e) {
+        return defaultValue;
+    }
+}
+
+function getFileBrowseUrl() {
+    var url = MODx.config['manager_url'] + 'index.php';
+    var query = {a: MODx.action['browser'], source: MODx.config['default_media_source']};
+    return url + '?' + Ext.urlEncode(query);
+}
+
 MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
     droppable: false,
     editorConfig: {
-        baseHref:               MODx.config['site_url'],
-        contentsCss:            MODx.config['editor_css_path'] || '',
-        language:               MODx.config['manager_language'] || 'en',
-        skin:                   MODx.config['ckeditor.skin'] || 'moono',
-        uiColor:                MODx.config['ckeditor.ui_color'] || '#DDDDDD',
-        toolbar:                MODx.config['ckeditor.toolbar'] ? JSON.parse(MODx.config['ckeditor.toolbar']) : null,
-        toolbarGroups:          MODx.config['ckeditor.toolbar_groups'] ? JSON.parse(MODx.config['ckeditor.toolbar_groups']) : null,
-        format_tags:            MODx.config['ckeditor.format_tags'] ? MODx.config['ckeditor.format_tags'] : 'p;h1;h2;h3;h4;h5;h6;pre;address;div',
-        extraPlugins:           MODx.config['ckeditor.extra_plugins'] || '',
-        disableObjectResizing:  MODx.config['ckeditor.object_resizing'] == false,
+        baseHref:                       getOption('site_url', 'string', '/'),
+        contentsCss:                    getOption('editor_css_path', 'string', ''),
+        language:                       getOption('manager_language', 'string'),
+        skin:                           getOption('ckeditor.skin', 'string'),
+        uiColor:                        getOption('ckeditor.ui_color', 'string'),
+        toolbar:                        getOption('ckeditor.toolbar', 'json'),
+        toolbarGroups:                  getOption('ckeditor.toolbar_groups', 'json'),
+        format_tags:                    getOption('ckeditor.format_tags', 'string'),
+        extraPlugins:                   getOption('ckeditor.extra_plugins', 'string'),
+        removePlugins:                  getOption('ckeditor.remove_plugins', 'string'),
+        stylesSet:                      getOption('ckeditor.styles_set', 'json', MODx.config['ckeditor.styles_set']),
+        startupMode:                    getOption('ckeditor.startup_mode', 'string'),
+        undoStackSize:                  getOption('ckeditor.undo_size', 'number'),
+        autocorrect_dash:               getOption('ckeditor.autocorrect_dash', 'string'),
+        autocorrect_doubleQuotes:       getOption('ckeditor.autocorrect_double_quotes', 'string'),
+        autocorrect_singleQuotes:       getOption('ckeditor.autocorrect_single_quotes', 'string'),
+        disableObjectResizing:          !getOption('ckeditor.object_resizing', 'boolean'),
+        disableNativeSpellChecker:      !getOption('ckeditor.native_spellchecker', 'boolean'),
+        entities:                       false,
+        autoParagraph:                  false,
+        magicline_putEverywhere:        true,
+        toolbarCanCollapse:             true,
+        dialog_backgroundCoverColor:    'silver',
+        dialog_backgroundCoverOpacity:  '0.5',
+        filebrowserBrowseUrl:           getFileBrowseUrl(),
         //keystrokes:             [], // TODO !!!
-        removePlugins:          MODx.config['ckeditor.remove_plugins'] || '',
-        stylesSet:              MODx.config['ckeditor.styles_set'] ? (function () {
-          var out = MODx.config['ckeditor.styles_set'];
-          try {
-            out = JSON.parse(out);
-          } catch(e) {
-            out = out;
-          }
-          return out;
-        })() : 'default',
-        startupMode:            MODx.config['ckeditor.startup_mode'] || 'wysiwyg',
-        undoStackSize:          MODx.config['ckeditor.undo_size'] || 100,
-        entities:           false,
-        autoParagraph:      false,
-        disableNativeSpellChecker: MODx.config['ckeditor.native_spellchecker'] == false,
-        filebrowserBrowseUrl: MODx.config['manager_url'] + 'index.php?a=' + MODx.action['browser'] + '&source=' + MODx.config['default_media_source'], // TODO !!!
-        dialog_backgroundCoverColor: 'silver',
-        dialog_backgroundCoverOpacity: '0.5',
-        magicline_putEverywhere: true,
         //menu_groups: 'clipboard,table,anchor,link,image', // TODO !!!
-        toolbarCanCollapse: true,
-        autocorrect_dash: MODx.config['ckeditor.autocorrect_dash'] || '—',
-        autocorrect_doubleQuotes: MODx.config['ckeditor.autocorrect_double_quotes'] || '«»',
-        autocorrect_singleQuotes: MODx.config['ckeditor.autocorrect_single_quotes'] || '„‟'
     },
 
     onRender: function (ct, position) {
@@ -419,3 +442,5 @@ MODx.unloadTVRTE = function() {
         MODx.unloadRTE(element);
     });
 };
+
+})();
