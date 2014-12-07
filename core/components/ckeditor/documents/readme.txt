@@ -2,7 +2,7 @@
 Extra: CKEditor
 --------------------
 Version: 1.2.0
-Created: November 16th, 2014
+Created: December 7th, 2014
 Since: December 5th, 2012
 Author: Danil Kostin <danya.postfactum@gmail.com>
 License: GNU GPLv2 (or later at your option)
