@@ -9,29 +9,28 @@
  *
  * @package ckeditor
  */
-
-if ($modx->event->name == 'OnRichTextEditorRegister') {
-    $modx->event->output('CKEditor');
-    return;
-}
-
-if ($modx->getOption('which_editor', null, 'CKEditor') !== 'CKEditor' || !$modx->getOption('use_editor', null, true)) {
-    return;
-}
+$enabled = $modx->getOption('which_editor', null, 'CKEditor') == 'CKEditor' && $modx->getOption('use_editor', null, true);
 
 switch ($modx->event->name) {
+    case 'OnRichTextEditorRegister':
+        $modx->event->output('CKEditor');
+        break;
     case 'OnManagerPageBeforeRender':
-        /** @var CKEditor $ckeditor */
-        $ckeditor = $modx->getService('ckeditor', 'CKEditor', $modx->getOption('ckeditor.core_path', null, $modx->getOption('core_path').'components/ckeditor/') . 'model/ckeditor/');
-        $ckeditor->initialize();
+        if ($enabled) {
+            /** @var CKEditor $ckeditor */
+            $ckeditor = $modx->getService('ckeditor', 'CKEditor', $modx->getOption('ckeditor.core_path', null, $modx->getOption('core_path').'components/ckeditor/') . 'model/ckeditor/');
+            $ckeditor->initialize();
+        }
         break;
     case 'OnRichTextEditorInit':
         break;
     case 'OnRichTextBrowserInit':
-        $funcNum = $_REQUEST['CKEditorFuncNum'];
-        $modx->event->output("function(data){
-            window.parent.opener.CKEDITOR.tools.callFunction({$funcNum}, data.fullRelativeUrl);
-        }");
+        if ($enabled) {
+            $funcNum = $_REQUEST['CKEditorFuncNum'];
+            $modx->event->output("function(data){
+                window.parent.opener.CKEDITOR.tools.callFunction({$funcNum}, data.fullRelativeUrl);
+            }");
+        }
         break;
 }
 
