@@ -115,6 +115,7 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
         dialog_backgroundCoverColor:    'silver',
         dialog_backgroundCoverOpacity:  '0.5',
         filebrowserBrowseUrl:           getFileBrowseUrl(),
+        height:							getOption('ckeditor.height', 'number'),
         //keystrokes:             [], // TODO !!!
         //menu_groups: 'clipboard,table,anchor,link,image', // TODO !!!
     },
@@ -332,7 +333,7 @@ MODx.ux.CKEditor.replaceElement = function(element) {
     var htmlEditor = MODx.load({
         xtype: 'modx-htmleditor',
         width: 'auto',
-        height: parseInt(element.height, 10) || 200,
+        height: parseInt(element.height, 10) || getOption('ckeditor.height', 'number'),
         applyTo: element,
         value: element.value || '<p></p>',
         droppable: true
