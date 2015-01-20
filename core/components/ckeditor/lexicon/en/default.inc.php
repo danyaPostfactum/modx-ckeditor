@@ -36,3 +36,5 @@ $_lang['setting_ckeditor.remove_plugins'] = 'Remove plugins';
 $_lang['setting_ckeditor.remove_plugins_desc'] = 'List of plugins to exclude, separated by «,».';
 $_lang['setting_ckeditor.native_spellchecker'] = 'Native spellchecker';
 $_lang['setting_ckeditor.native_spellchecker_desc'] = 'Enables the built-in words spell checker if browser provides one.';
+$_lang['setting_ckeditor.height'] = 'Editor height';
+$_lang['setting_ckeditor.height_desc'] = 'Height of the editor field in pixels.';
