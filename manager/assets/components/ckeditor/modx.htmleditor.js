@@ -131,7 +131,7 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
     },
 
     addSaveCommand: function() {
-        var updateButton = (function(){
+        var getUpdateButton = function(){
             var pageButtons = MODx.activePage ? MODx.activePage.buttons : {};
             for (var button in pageButtons) {
                 var process = pageButtons[button].process;
@@ -142,10 +142,11 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
                 }
             }
             return null;
-        })();
+        };
 
         this.editor.addCommand( '_save', {
             exec: function( editor ) {
+                var updateButton = getUpdateButton();
                 if (updateButton) {
                     MODx.activePage.ab.handleClick(updateButton);
                 }
