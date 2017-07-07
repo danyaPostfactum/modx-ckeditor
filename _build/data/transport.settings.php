@@ -41,7 +41,7 @@ $settings['skin']= $modx->newObject('modSystemSetting');
 $settings['skin']->fromArray(array(
         'key' => 'ckeditor.skin',
         'xtype' => 'textfield',
-        'value' => 'moono',
+        'value' => 'moono-lisa',
         'namespace' => 'ckeditor',
         'area' => 'general'
     ),'',true,true);
