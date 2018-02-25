@@ -1,5 +1,12 @@
 Changelog for CKEditor integration into MODx Revolution.
 
+CKEditor 1.4.0
+====================================
+- Fixed Save shortcut command (Patrick Reisert @Boddlnagg)
+- Added Resource Editor Height option
+- Default skin is Moono-Lisa
+- CKEditor core is updated to 4.8.0
+
 CKEditor 1.3.0
 ====================================
 - Add third-party components support (MODx.loadRTE()) (Romain @rtripault)
