@@ -118,4 +118,13 @@ $settings['native_spellchecker']->fromArray(array(
         'area' => 'general'
     ),'',true,true);
 
+$settings['resource_editor_height']= $modx->newObject('modSystemSetting');
+$settings['resource_editor_height']->fromArray(array(
+        'key' => 'ckeditor.resource_editor_height',
+        'xtype' => 'textfield',
+        'value' => '600',
+        'namespace' => 'ckeditor',
+        'area' => 'general'
+    ),'',true,true);
+
 return $settings;

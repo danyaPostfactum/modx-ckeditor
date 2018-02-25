@@ -36,3 +36,5 @@ $_lang['setting_ckeditor.remove_plugins'] = 'Удаляемые плагины';
 $_lang['setting_ckeditor.remove_plugins_desc'] = 'Список исключаемых плагинов для загрузки, через запятую.';
 $_lang['setting_ckeditor.native_spellchecker'] = 'Проверка правописания браузером';
 $_lang['setting_ckeditor.native_spellchecker_desc'] = 'Включает встроенную в браузер проверку правописания (если она есть).';
+$_lang['setting_ckeditor.resource_editor_height'] = 'Высота редактора ресурса';
+$_lang['setting_ckeditor.resource_editor_height_desc'] = 'Настройка высоты редактора содержимого ресурса (документа)';

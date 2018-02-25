@@ -332,7 +332,7 @@ MODx.ux.CKEditor.replaceElement = function(element) {
     var htmlEditor = MODx.load({
         xtype: 'modx-htmleditor',
         width: 'auto',
-        height: parseInt(element.height, 10) || 200,
+        height: Ext.Element(element).getHeight() || 200,
         applyTo: element,
         value: element.value || '<p></p>',
         droppable: true
@@ -399,6 +399,9 @@ MODx.loadRTE = function(id) {
 
     var editor;
     if (component) {
+        if (id == 'ta' && getOption('ckeditor.resource_editor_height', 'number', 0)) {
+            component.setHeight(getOption('ckeditor.resource_editor_height', 'number', 0));
+        }
         editor = MODx.ux.CKEditor.replaceComponent(component);
     } else if (element) {
         editor = MODx.ux.CKEditor.replaceElement(element.dom);
