@@ -127,4 +127,14 @@ $settings['resource_editor_height']->fromArray(array(
         'area' => 'general'
     ),'',true,true);
 
+$settings['force_paste_plain_text']= $modx->newObject('modSystemSetting');
+$settings['force_paste_plain_text']->fromArray(array(
+        'key' => 'ckeditor.force_paste_plain_text',
+        'xtype' => 'textfield',
+        'type' => 'list',
+        'value' => 'false', //'true', 'allow-word', 'false'
+        'namespace' => 'ckeditor',
+        'area' => 'general',
+    ),'',true,true);
+
 return $settings;

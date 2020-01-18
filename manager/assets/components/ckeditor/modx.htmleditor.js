@@ -75,6 +75,15 @@ function getOption(key, type, defaultValue) {
         'json': JSON.parse
     };
     try {
+        if ( 'boolean_or_string' === type ) {
+            if ( 'true' === raw.toLowerCase() ) {
+                return true;
+            }
+            if ( 'false' === raw.toLowerCase() ) {
+                return false;
+            }
+            type = 'string';
+        }
         return types[type](raw);
     } catch (e) {
         return defaultValue;
@@ -86,6 +95,8 @@ function getFileBrowseUrl() {
     var query = {a: MODx.action['browser'], source: MODx.config['default_media_source']};
     return url + '?' + Ext.urlEncode(query);
 }
+
+var force_paste_plain_text = getOption('ckeditor.force_paste_plain_text', 'boolean_or_string', false);
 
 MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
     droppable: false,
@@ -99,7 +110,7 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
         toolbarGroups:                  getOption('ckeditor.toolbar_groups', 'json'),
         format_tags:                    getOption('ckeditor.format_tags', 'string'),
         extraPlugins:                   getOption('ckeditor.extra_plugins', 'string'),
-        removePlugins:                  getOption('ckeditor.remove_plugins', 'string'),
+        removePlugins:                  getOption('ckeditor.remove_plugins', 'string') + (force_paste_plain_text === true ? ',pastefromword' : ''),
         stylesSet:                      getOption('ckeditor.styles_set', 'json', MODx.config['ckeditor.styles_set']),
         startupMode:                    getOption('ckeditor.startup_mode', 'string'),
         undoStackSize:                  getOption('ckeditor.undo_size', 'number'),
@@ -108,6 +119,7 @@ MODx.ux.CKEditor = Ext.extend(Ext.ux.CKEditor, {
         autocorrect_singleQuotes:       getOption('ckeditor.autocorrect_single_quotes', 'string'),
         disableObjectResizing:          !getOption('ckeditor.object_resizing', 'boolean'),
         disableNativeSpellChecker:      !getOption('ckeditor.native_spellchecker', 'boolean'),
+        forcePasteAsPlainText:          force_paste_plain_text,
         entities:                       false,
         autoParagraph:                  false,
         magicline_putEverywhere:        true,
