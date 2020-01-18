@@ -36,5 +36,7 @@ $_lang['setting_ckeditor.remove_plugins'] = 'Remove plugins';
 $_lang['setting_ckeditor.remove_plugins_desc'] = 'List of plugins to exclude, separated by «,».';
 $_lang['setting_ckeditor.native_spellchecker'] = 'Native spellchecker';
 $_lang['setting_ckeditor.native_spellchecker_desc'] = 'Enables the built-in words spell checker if browser provides one.';
+$_lang['setting_ckeditor.force_paste_plain_text'] = 'Force Paste as Plain Text';
+$_lang['setting_ckeditor.force_paste_plain_text_desc'] = 'Whether to force all pasting operations to insert plain text into the editor, losing any formatting information possibly available in the source text. Possible values: "true": force plain text, "false": allow all formatting, "allow-word": All formatting is removed, except formatting from Microsoft Word (needs pastefromword plugin).';
 $_lang['setting_ckeditor.resource_editor_height'] = 'Resource editor height';
 $_lang['setting_ckeditor.resource_editor_height_desc'] = 'Resource (document) content editor height adjustment';
