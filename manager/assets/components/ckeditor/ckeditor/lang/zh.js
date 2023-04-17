@@ -1,6 +1,7 @@
 ﻿/*
 Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
+Chinese Traditional language.
 */
 CKEDITOR.lang['zh'] = {
     "editor": "RTF 編輯器",
@@ -11,6 +12,7 @@ CKEDITOR.lang['zh'] = {
         "url": "URL",
         "protocol": "通訊協定",
         "upload": "上傳",
+		"modx_res": "選擇內部資源/頁面",
         "uploadSubmit": "傳送至伺服器",
         "image": "圖像",
         "flash": "Flash",

@@ -1,6 +1,7 @@
 ﻿/*
 Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
+Indonesian language
 */
 CKEDITOR.lang['id'] = {
     "editor": "Rich Text Editor",
@@ -11,6 +12,7 @@ CKEDITOR.lang['id'] = {
         "url": "URL",
         "protocol": "Protokol",
         "upload": "Unggah",
+        "modx_res": "Pilih sumber daya / halaman internal",
         "uploadSubmit": "Kirim ke Server",
         "image": "Gambar",
         "flash": "Flash",

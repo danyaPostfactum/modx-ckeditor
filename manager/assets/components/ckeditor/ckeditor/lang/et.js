@@ -1,6 +1,7 @@
 ﻿/*
 Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
+Estonian language.
 */
 CKEDITOR.lang['et'] = {
     "editor": "Rikkalik tekstiredaktor",
@@ -11,6 +12,7 @@ CKEDITOR.lang['et'] = {
         "url": "URL",
         "protocol": "Protokoll",
         "upload": "Laadi üles",
+        "modx_res": "Valige sisemine ressurss / leht",
         "uploadSubmit": "Saada serverisse",
         "image": "Pilt",
         "flash": "Flash",

@@ -1,6 +1,7 @@
 ﻿/*
 Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
+Bulgarian language.
 */
 CKEDITOR.lang['bg'] = {
     "editor": "Текстов редактор за форматиран текст",
@@ -11,6 +12,7 @@ CKEDITOR.lang['bg'] = {
         "url": "URL",
         "protocol": "Протокол",
         "upload": "Качване",
+        "modx_res": "Изберете вътрешен ресурс / страница",
         "uploadSubmit": "Изпращане към сървъра",
         "image": "Снимка",
         "flash": "Флаш",

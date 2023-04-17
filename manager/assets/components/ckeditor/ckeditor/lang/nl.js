@@ -1,6 +1,7 @@
 ﻿/*
 Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
+Norwegian language.
 */
 CKEDITOR.lang['nl'] = {
     "editor": "Tekstverwerker",
@@ -11,6 +12,7 @@ CKEDITOR.lang['nl'] = {
         "url": "URL",
         "protocol": "Protocol",
         "upload": "Upload",
+		"modx_res": "Selecteer interne bron / pagina",
         "uploadSubmit": "Naar server verzenden",
         "image": "Afbeelding",
         "flash": "Flash",

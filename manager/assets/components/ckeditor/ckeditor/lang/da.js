@@ -1,6 +1,7 @@
 ﻿/*
 Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
+Danish language.
 */
 CKEDITOR.lang['da'] = {
     "editor": "Rich Text Editor",
@@ -11,6 +12,7 @@ CKEDITOR.lang['da'] = {
         "url": "URL",
         "protocol": "Protokol",
         "upload": "Upload",
+		"modx_res": "Vælg intern ressource / side",
         "uploadSubmit": "Upload",
         "image": "Indsæt billede",
         "flash": "Indsæt Flash",

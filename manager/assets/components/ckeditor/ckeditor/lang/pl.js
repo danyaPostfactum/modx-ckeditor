@@ -1,6 +1,7 @@
 ﻿/*
 Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
+Polish language.
 */
 CKEDITOR.lang['pl'] = {
     "editor": "Edytor tekstu sformatowanego",
@@ -11,6 +12,7 @@ CKEDITOR.lang['pl'] = {
         "url": "Adres URL",
         "protocol": "Protokół",
         "upload": "Wyślij",
+		"modx_res": "Wybierz wewnętrzny zasób/stronę",
         "uploadSubmit": "Wyślij",
         "image": "Obrazek",
         "flash": "Flash",

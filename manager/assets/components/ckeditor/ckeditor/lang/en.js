@@ -1,6 +1,7 @@
 ﻿/*
 Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
+English lang.
 */
 CKEDITOR.lang['en'] = {
     "editor": "Rich Text Editor",
@@ -11,6 +12,7 @@ CKEDITOR.lang['en'] = {
         "url": "URL",
         "protocol": "Protocol",
         "upload": "Upload",
+		"modx_res": "Select internal resource / page",
         "uploadSubmit": "Send it to the Server",
         "image": "Image",
         "flash": "Flash",

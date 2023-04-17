@@ -1,6 +1,7 @@
 ﻿/*
 Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
+Romanian language.
 */
 CKEDITOR.lang['ro'] = {
     "editor": "Editor de text îmbogățit",
@@ -11,6 +12,7 @@ CKEDITOR.lang['ro'] = {
         "url": "URL",
         "protocol": "Protocol",
         "upload": "Încarcă",
+		"modx_res": "Selectați resursa/pagina internă",
         "uploadSubmit": "Trimite la server",
         "image": "Imagine",
         "flash": "Flash",

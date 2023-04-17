@@ -1,6 +1,7 @@
 ﻿/*
 Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
+Swedish language.
 */
 CKEDITOR.lang['sv'] = {
     "editor": "Rich Text-editor",
@@ -11,6 +12,7 @@ CKEDITOR.lang['sv'] = {
         "url": "URL",
         "protocol": "Protokoll",
         "upload": "Ladda upp",
+		"modx_res": "Välj intern resurs/sida",
         "uploadSubmit": "Skicka till server",
         "image": "Bild",
         "flash": "Flash",

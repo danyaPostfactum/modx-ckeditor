@@ -1,6 +1,7 @@
 ﻿/*
 Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
+Hebrew language.
 */
 CKEDITOR.lang['he'] = {
     "editor": "עורך טקסט עשיר",
@@ -11,6 +12,7 @@ CKEDITOR.lang['he'] = {
         "url": "כתובת (URL)",
         "protocol": "פרוטוקול",
         "upload": "העלאה",
+		"modx_res": "בחר משאב / עמוד פנימי",
         "uploadSubmit": "שליחה לשרת",
         "image": "תמונה",
         "flash": "פלאש",

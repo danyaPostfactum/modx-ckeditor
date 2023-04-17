@@ -1,6 +1,7 @@
 ﻿/*
 Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
+Spanish language.
 */
 CKEDITOR.lang['es'] = {
     "editor": "Editor de texto enriquecido",
@@ -11,6 +12,7 @@ CKEDITOR.lang['es'] = {
         "url": "URL",
         "protocol": "Protocolo",
         "upload": "Cargar",
+        "modx_res": "Seleccionar página/recurso interno",
         "uploadSubmit": "Enviar al Servidor",
         "image": "Imagen",
         "flash": "Flash",

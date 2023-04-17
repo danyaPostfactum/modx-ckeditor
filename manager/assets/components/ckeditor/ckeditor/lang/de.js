@@ -1,6 +1,7 @@
 ﻿/*
 Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
+German language.
 */
 CKEDITOR.lang['de'] = {
     "editor": "WYSIWYG-Editor",
@@ -11,6 +12,7 @@ CKEDITOR.lang['de'] = {
         "url": "URL",
         "protocol": "Protokoll",
         "upload": "Hochladen",
+		"modx_res": "Interne Ressource / Seite auswählen",
         "uploadSubmit": "Zum Server senden",
         "image": "Bild",
         "flash": "Flash",

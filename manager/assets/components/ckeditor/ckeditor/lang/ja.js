@@ -1,6 +1,7 @@
 ﻿/*
 Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
+Japanese language.
 */
 CKEDITOR.lang['ja'] = {
     "editor": "リッチテキストエディタ",
@@ -11,6 +12,7 @@ CKEDITOR.lang['ja'] = {
         "url": "URL",
         "protocol": "プロトコル",
         "upload": "アップロード",
+		"modx_res": "内部リソース/ページを選択",
         "uploadSubmit": "サーバーに送信",
         "image": "イメージ",
         "flash": "Flash",

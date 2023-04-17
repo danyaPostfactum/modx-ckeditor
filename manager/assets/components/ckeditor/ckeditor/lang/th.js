@@ -1,6 +1,7 @@
 ﻿/*
 Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
+Thai language.
 */
 CKEDITOR.lang['th'] = {
     "editor": "Rich Text Editor",
@@ -11,6 +12,7 @@ CKEDITOR.lang['th'] = {
         "url": "ที่อยู่อ้างอิง URL",
         "protocol": "โปรโตคอล",
         "upload": "อัพโหลดไฟล์",
+        "modx_res": "เลือกทรัพยากรภายใน / หน้า",
         "uploadSubmit": "อัพโหลดไฟล์ไปเก็บไว้ที่เครื่องแม่ข่าย (เซิร์ฟเวอร์)",
         "image": "รูปภาพ",
         "flash": "ไฟล์ Flash",

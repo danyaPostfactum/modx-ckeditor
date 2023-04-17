@@ -1,6 +1,7 @@
 ﻿/*
 Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
+Chinese Simplified language.
 */
 CKEDITOR.lang['zh-cn'] = {
     "editor": "所见即所得编辑器",
@@ -11,6 +12,7 @@ CKEDITOR.lang['zh-cn'] = {
         "url": "URL",
         "protocol": "协议",
         "upload": "上传",
+        "modx_res": "选择内部资源/页面",
         "uploadSubmit": "上传到服务器",
         "image": "图像",
         "flash": "Flash",

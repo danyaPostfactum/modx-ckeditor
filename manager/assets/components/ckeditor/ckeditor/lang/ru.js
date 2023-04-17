@@ -1,6 +1,7 @@
 ﻿/*
 Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
+Russian language.
 */
 CKEDITOR.lang['ru'] = {
     "editor": "Визуальный текстовый редактор",
@@ -11,6 +12,7 @@ CKEDITOR.lang['ru'] = {
         "url": "Ссылка",
         "protocol": "Протокол",
         "upload": "Загрузка файла",
+        "modx_res": "Выбрать внутренний ресурс / страницу",
         "uploadSubmit": "Загрузить на сервер",
         "image": "Изображение",
         "flash": "Flash",

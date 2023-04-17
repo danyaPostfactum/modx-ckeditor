@@ -1,6 +1,7 @@
 ﻿/*
 Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
+Finnish language.
 */
 CKEDITOR.lang['fi'] = {
     "editor": "Rikastekstieditori",
@@ -11,6 +12,7 @@ CKEDITOR.lang['fi'] = {
         "url": "Osoite",
         "protocol": "Protokolla",
         "upload": "Lisää tiedosto",
+        "modx_res": "Valitse sisäinen resurssi/sivu",
         "uploadSubmit": "Lähetä palvelimelle",
         "image": "Kuva",
         "flash": "Flash-animaatio",
