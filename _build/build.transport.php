@@ -21,6 +21,7 @@ $sources = array(
     'root' => $root,
     'build' => $root . '_build/',
     'data' => $root . '_build/data/',
+    'processors' => $root . 'core/model/modx/processors/resource/',
     'lexicon' => $root . 'core/components/'.PKG_NAMESPACE.'/lexicon/',
     'documents' => $root.'core/components/'.PKG_NAMESPACE.'/documents/',
     'elements' => $root.'core/components/'.PKG_NAMESPACE.'/elements/',
@@ -86,6 +87,12 @@ $vehicle->resolve('file',array(
     'source' => $sources['source_manager_assets'],
     'target' => "return MODX_MANAGER_PATH . 'assets/components/';",
 ));
+
+$vehicle->resolve('file',array(
+    'source' => $sources['processors'],
+    'target' => "return MODX_CORE_PATH . 'model/modx/processors/ckeditor/';",
+));
+
 $vehicle->resolve('file',array(
     'source' => $sources['source_core'],
     'target' => "return MODX_CORE_PATH . 'components/';",

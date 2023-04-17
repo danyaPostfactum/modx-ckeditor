@@ -39,7 +39,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
     animation: dialog_spinner 1s infinite linear
 }
 
-.cke_browser_ie8 .cke_dialog_spinner, .cke_browser_ie9 .cke_dialog_spinner {
+.cke_browser_ie8 .cke_dialog_spinner,
+.cke_browser_ie9 .cke_dialog_spinner {
     background: url(images/spinner.gif) center top no-repeat;
     width: 16px;
     height: 16px;
@@ -51,6 +52,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg)
     }
+
     100% {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg)
@@ -62,6 +64,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg)
     }
+
     100% {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg)
@@ -160,11 +163,14 @@ a.cke_dialog_tab_selected {
     filter: none
 }
 
-a.cke_dialog_tab_selected:hover, a.cke_dialog_tab_selected:focus {
+a.cke_dialog_tab_selected:hover,
+a.cke_dialog_tab_selected:focus {
     border-bottom-color: #fff
 }
 
-.cke_hc a.cke_dialog_tab:hover, .cke_hc a.cke_dialog_tab:focus, .cke_hc a.cke_dialog_tab_selected {
+.cke_hc a.cke_dialog_tab:hover,
+.cke_hc a.cke_dialog_tab:focus,
+.cke_hc a.cke_dialog_tab_selected {
     border: 3px solid;
     padding: 2px 6px
 }
@@ -238,7 +244,8 @@ div.cke_disabled .cke_dialog_ui_labeled_content div * {
     cursor: default
 }
 
-.cke_dialog_ui_vbox table, .cke_dialog_ui_hbox table {
+.cke_dialog_ui_vbox table,
+.cke_dialog_ui_hbox table {
     margin: auto
 }
 
@@ -251,28 +258,38 @@ div.cke_disabled .cke_dialog_ui_labeled_content div * {
     margin-top: 12px
 }
 
-.cke_dialog_ui_hbox_first, .cke_dialog_ui_hbox_child, .cke_dialog_ui_hbox_last {
+.cke_dialog_ui_hbox_first,
+.cke_dialog_ui_hbox_child,
+.cke_dialog_ui_hbox_last {
     vertical-align: top
 }
 
-.cke_ltr .cke_dialog_ui_hbox_first, .cke_ltr .cke_dialog_ui_hbox_child {
+.cke_ltr .cke_dialog_ui_hbox_first,
+.cke_ltr .cke_dialog_ui_hbox_child {
     padding-right: 10px
 }
 
-.cke_rtl .cke_dialog_ui_hbox_first, .cke_rtl .cke_dialog_ui_hbox_child {
+.cke_rtl .cke_dialog_ui_hbox_first,
+.cke_rtl .cke_dialog_ui_hbox_child {
     padding-left: 10px
 }
 
-.cke_ltr .cke_dialog_footer_buttons .cke_dialog_ui_hbox_first, .cke_ltr .cke_dialog_footer_buttons .cke_dialog_ui_hbox_child {
+.cke_ltr .cke_dialog_footer_buttons .cke_dialog_ui_hbox_first,
+.cke_ltr .cke_dialog_footer_buttons .cke_dialog_ui_hbox_child {
     padding-right: 5px
 }
 
-.cke_rtl .cke_dialog_footer_buttons .cke_dialog_ui_hbox_first, .cke_rtl .cke_dialog_footer_buttons .cke_dialog_ui_hbox_child {
+.cke_rtl .cke_dialog_footer_buttons .cke_dialog_ui_hbox_first,
+.cke_rtl .cke_dialog_footer_buttons .cke_dialog_ui_hbox_child {
     padding-left: 5px;
     padding-right: 0
 }
 
-.cke_hc div.cke_dialog_ui_input_text, .cke_hc div.cke_dialog_ui_input_password, .cke_hc div.cke_dialog_ui_input_textarea, .cke_hc div.cke_dialog_ui_input_select, .cke_hc div.cke_dialog_ui_input_file {
+.cke_hc div.cke_dialog_ui_input_text,
+.cke_hc div.cke_dialog_ui_input_password,
+.cke_hc div.cke_dialog_ui_input_textarea,
+.cke_hc div.cke_dialog_ui_input_select,
+.cke_hc div.cke_dialog_ui_input_file {
     border: 1px solid
 }
 
@@ -281,7 +298,9 @@ textarea.cke_dialog_ui_input_textarea {
     resize: none
 }
 
-input.cke_dialog_ui_input_text, input.cke_dialog_ui_input_password, textarea.cke_dialog_ui_input_textarea {
+input.cke_dialog_ui_input_text,
+input.cke_dialog_ui_input_password,
+textarea.cke_dialog_ui_input_textarea {
     background-color: #fff;
     border: 1px solid #bcbcbc;
     padding: 4px 6px;
@@ -294,11 +313,16 @@ input.cke_dialog_ui_input_text, input.cke_dialog_ui_input_password, textarea.cke
     margin-left: 1px
 }
 
-input.cke_dialog_ui_input_text:hover, input.cke_dialog_ui_input_password:hover, textarea.cke_dialog_ui_input_textarea:hover {
+input.cke_dialog_ui_input_text:hover,
+input.cke_dialog_ui_input_password:hover,
+textarea.cke_dialog_ui_input_textarea:hover {
     border: 1px solid #aeb3b9
 }
 
-input.cke_dialog_ui_input_text:focus, input.cke_dialog_ui_input_password:focus, textarea.cke_dialog_ui_input_textarea:focus, select.cke_dialog_ui_input_select:focus {
+input.cke_dialog_ui_input_text:focus,
+input.cke_dialog_ui_input_password:focus,
+textarea.cke_dialog_ui_input_textarea:focus,
+select.cke_dialog_ui_input_select:focus {
     outline: 0;
     border: 2px solid #139ff7
 }
@@ -316,12 +340,16 @@ select.cke_dialog_ui_input_select:focus {
     width: 100% !important
 }
 
-input.cke_dialog_ui_checkbox_input, input.cke_dialog_ui_radio_input {
+input.cke_dialog_ui_checkbox_input,
+input.cke_dialog_ui_radio_input {
     margin-left: 1px;
     margin-right: 2px
 }
 
-input.cke_dialog_ui_checkbox_input:focus, input.cke_dialog_ui_checkbox_input:active, input.cke_dialog_ui_radio_input:focus, input.cke_dialog_ui_radio_input:active {
+input.cke_dialog_ui_checkbox_input:focus,
+input.cke_dialog_ui_checkbox_input:active,
+input.cke_dialog_ui_radio_input:focus,
+input.cke_dialog_ui_radio_input:active {
     border: 0;
     outline: 2px solid #139ff7
 }
@@ -357,13 +385,16 @@ a.cke_dialog_ui_button:hover {
     background: #fff
 }
 
-a.cke_dialog_ui_button:focus, a.cke_dialog_ui_button:active {
+a.cke_dialog_ui_button:focus,
+a.cke_dialog_ui_button:active {
     border: 2px solid #139ff7;
     outline: 0;
     padding: 3px 0
 }
 
-.cke_hc a.cke_dialog_ui_button:hover, .cke_hc a.cke_dialog_ui_button:focus, .cke_hc a.cke_dialog_ui_button:active {
+.cke_hc a.cke_dialog_ui_button:hover,
+.cke_hc a.cke_dialog_ui_button:focus,
+.cke_hc a.cke_dialog_ui_button:active {
     border: 3px solid
 }
 
@@ -393,11 +424,14 @@ a.cke_dialog_ui_button_ok:focus {
     box-shadow: inset 0 0 0 2px #FFF
 }
 
-a.cke_dialog_ui_button_ok:focus, a.cke_dialog_ui_button_ok:active {
+a.cke_dialog_ui_button_ok:focus,
+a.cke_dialog_ui_button_ok:active {
     border-color: #139ff7
 }
 
-.cke_hc a.cke_dialog_ui_button_ok:hover, .cke_hc a.cke_dialog_ui_button_ok:focus, .cke_hc a.cke_dialog_ui_button_ok:active {
+.cke_hc a.cke_dialog_ui_button_ok:hover,
+.cke_hc a.cke_dialog_ui_button_ok:focus,
+.cke_hc a.cke_dialog_ui_button_ok:active {
     border-color: #484848
 }
 
@@ -441,7 +475,9 @@ select.cke_dialog_ui_input_select {
     height: 25px
 }
 
-.cke_hc .cke_dialog_ui_labeled_content input:focus, .cke_hc .cke_dialog_ui_labeled_content select:focus, .cke_hc .cke_dialog_ui_labeled_content textarea:focus {
+.cke_hc .cke_dialog_ui_labeled_content input:focus,
+.cke_hc .cke_dialog_ui_labeled_content select:focus,
+.cke_hc .cke_dialog_ui_labeled_content textarea:focus {
     outline: 1px dotted
 }
 
@@ -479,7 +515,8 @@ select.cke_dialog_ui_input_select {
     float: left
 }
 
-.cke_dialog a.cke_btn_locked, .cke_dialog a.cke_btn_unlocked {
+.cke_dialog a.cke_btn_locked,
+.cke_dialog a.cke_btn_unlocked {
     float: left;
     width: 16px;
     height: 16px;
@@ -488,7 +525,9 @@ select.cke_dialog_ui_input_select {
     font-size: 1px
 }
 
-.cke_dialog a.cke_btn_locked, .cke_dialog a.cke_btn_unlocked, .cke_dialog a.cke_btn_reset {
+.cke_dialog a.cke_btn_locked,
+.cke_dialog a.cke_btn_unlocked,
+.cke_dialog a.cke_btn_reset {
     margin: 2px
 }
 
@@ -500,11 +539,13 @@ select.cke_dialog_ui_input_select {
     background-image: url(images/lock-open.png)
 }
 
-.cke_rtl .cke_dialog a.cke_btn_locked, .cke_rtl .cke_dialog a.cke_btn_unlocked {
+.cke_rtl .cke_dialog a.cke_btn_locked,
+.cke_rtl .cke_dialog a.cke_btn_unlocked {
     float: right
 }
 
-.cke_hidpi .cke_dialog a.cke_btn_unlocked, .cke_hidpi .cke_dialog a.cke_btn_locked {
+.cke_hidpi .cke_dialog a.cke_btn_unlocked,
+.cke_hidpi .cke_dialog a.cke_btn_locked {
     background-size: 16px
 }
 
@@ -520,7 +561,16 @@ select.cke_dialog_ui_input_select {
     display: none
 }
 
-.cke_dialog a.cke_btn_over, .cke_dialog a.cke_btn_locked:hover, .cke_dialog a.cke_btn_locked:focus, .cke_dialog a.cke_btn_locked:active, .cke_dialog a.cke_btn_unlocked:hover, .cke_dialog a.cke_btn_unlocked:focus, .cke_dialog a.cke_btn_unlocked:active, .cke_dialog a.cke_btn_reset:hover, .cke_dialog a.cke_btn_reset:focus, .cke_dialog a.cke_btn_reset:active {
+.cke_dialog a.cke_btn_over,
+.cke_dialog a.cke_btn_locked:hover,
+.cke_dialog a.cke_btn_locked:focus,
+.cke_dialog a.cke_btn_locked:active,
+.cke_dialog a.cke_btn_unlocked:hover,
+.cke_dialog a.cke_btn_unlocked:focus,
+.cke_dialog a.cke_btn_unlocked:active,
+.cke_dialog a.cke_btn_reset:hover,
+.cke_dialog a.cke_btn_reset:focus,
+.cke_dialog a.cke_btn_reset:active {
     cursor: pointer;
     outline: 0;
     margin: 0;
@@ -535,7 +585,8 @@ select.cke_dialog_ui_input_select {
     padding: 0 6px
 }
 
-.cke_dialog_ui_checkbox, .cke_dialog fieldset .cke_dialog_ui_vbox .cke_dialog_ui_checkbox {
+.cke_dialog_ui_checkbox,
+.cke_dialog fieldset .cke_dialog_ui_vbox .cke_dialog_ui_checkbox {
     display: inline-block
 }
 
@@ -543,7 +594,10 @@ select.cke_dialog_ui_input_select {
     padding-top: 5px
 }
 
-.cke_dialog_ui_checkbox .cke_dialog_ui_checkbox_input, .cke_dialog_ui_checkbox .cke_dialog_ui_checkbox_input + label, .cke_dialog fieldset .cke_dialog_ui_vbox .cke_dialog_ui_checkbox .cke_dialog_ui_checkbox_input, .cke_dialog fieldset .cke_dialog_ui_vbox .cke_dialog_ui_checkbox .cke_dialog_ui_checkbox_input + label {
+.cke_dialog_ui_checkbox .cke_dialog_ui_checkbox_input,
+.cke_dialog_ui_checkbox .cke_dialog_ui_checkbox_input+label,
+.cke_dialog fieldset .cke_dialog_ui_vbox .cke_dialog_ui_checkbox .cke_dialog_ui_checkbox_input,
+.cke_dialog fieldset .cke_dialog_ui_vbox .cke_dialog_ui_checkbox .cke_dialog_ui_checkbox_input+label {
     vertical-align: middle
 }
 
@@ -620,11 +674,14 @@ select.cke_dialog_ui_input_select {
     letter-spacing: .3px
 }
 
-.cke_dialog_body label + .cke_dialog_ui_labeled_content {
+.cke_dialog_body label+.cke_dialog_ui_labeled_content {
     margin-top: 2px
 }
 
-.cke_dialog_contents_body .cke_dialog_ui_text, .cke_dialog_contents_body .cke_dialog_ui_select, .cke_dialog_contents_body .cke_dialog_ui_hbox_last > a.cke_dialog_ui_button {
+.cke_dialog_contents_body .cke_dialog_ui_text,
+.cke_dialog_contents_body .cke_dialog_ui_select,
+.cke_dialog_contents_body .cke_dialog_ui_hbox_first > a.cke_dialog_ui_button,
+.cke_dialog_contents_body .cke_dialog_ui_hbox_last>a.cke_dialog_ui_button {
     margin-top: 4px
 }
 
@@ -647,20 +704,30 @@ a.cke_specialchar {
     text-align: center
 }
 
-a.cke_smile, a.cke_specialchar {
+a.cke_smile,
+a.cke_specialchar {
     border: 2px solid transparent
 }
 
-a.cke_smile:hover, a.cke_smile:focus, a.cke_smile:active, a.cke_specialchar:hover, a.cke_specialchar:focus, a.cke_specialchar:active {
+a.cke_smile:hover,
+a.cke_smile:focus,
+a.cke_smile:active,
+a.cke_specialchar:hover,
+a.cke_specialchar:focus,
+a.cke_specialchar:active {
     background: #fff;
     outline: 0
 }
 
-a.cke_smile:hover, a.cke_specialchar:hover {
+a.cke_smile:hover,
+a.cke_specialchar:hover {
     border-color: #888
 }
 
-a.cke_smile:focus, a.cke_smile:active, a.cke_specialchar:focus, a.cke_specialchar:active {
+a.cke_smile:focus,
+a.cke_smile:active,
+a.cke_specialchar:focus,
+a.cke_specialchar:active {
     border-color: #139ff7
 }
 
@@ -690,13 +757,15 @@ a.cke_smile:focus, a.cke_smile:active, a.cke_specialchar:focus, a.cke_specialcha
     margin: 2px 7px 2px 2px
 }
 
-.cke_dialog_contents_body .cke_accessibility_legend:focus, .cke_dialog_contents_body .cke_accessibility_legend:active {
+.cke_dialog_contents_body .cke_accessibility_legend:focus,
+.cke_dialog_contents_body .cke_accessibility_legend:active {
     outline: 0;
     border: 2px solid #139ff7;
     margin: 0 5px 0 0
 }
 
-.cke_dialog_contents_body input[type=file]:focus, .cke_dialog_contents_body input[type=file]:active {
+.cke_dialog_contents_body input[type=file]:focus,
+.cke_dialog_contents_body input[type=file]:active {
     border: 2px solid #139ff7
 }
 
@@ -720,7 +789,8 @@ a.cke_smile:focus, a.cke_smile:active, a.cke_specialchar:focus, a.cke_specialcha
     padding-top: 4px
 }
 
-.cke_dialog_image_url .cke_dialog_ui_hbox_last, .cke_dialog_flash_url .cke_dialog_ui_hbox_last {
+.cke_dialog_image_url .cke_dialog_ui_hbox_last,
+.cke_dialog_flash_url .cke_dialog_ui_hbox_last {
     vertical-align: bottom
 }
 
@@ -733,17 +803,29 @@ a.cke_dialog_ui_button.cke_dialog_image_browse {
     margin: 1px
 }
 
-.cke_dialog_contents_body .cke_tpl_list:focus, .cke_dialog_contents_body .cke_tpl_list:active {
+.cke_dialog_contents_body .cke_tpl_list:focus,
+.cke_dialog_contents_body .cke_tpl_list:active {
     outline: 0;
     margin: 0;
     border: 2px solid #139ff7
 }
 
-.cke_dialog_contents_body .cke_tpl_list a:focus, .cke_dialog_contents_body .cke_tpl_list a:active {
+.cke_dialog_contents_body .cke_tpl_list a:focus,
+.cke_dialog_contents_body .cke_tpl_list a:active {
     outline: 0
 }
 
-.cke_dialog_contents_body .cke_tpl_list a:focus .cke_tpl_item, .cke_dialog_contents_body .cke_tpl_list a:active .cke_tpl_item {
+.cke_dialog_contents_body .cke_tpl_list a:focus .cke_tpl_item,
+.cke_dialog_contents_body .cke_tpl_list a:active .cke_tpl_item {
     border: 2px solid #139ff7;
     padding: 6px
 }
+
+.res-list .x-form-field-wrap {
+    position: relative;
+    border: solid 1px #999;
+    width: 98% !important;
+    padding: 0px 4px;
+    line-height: 27px;
+}
+
