@@ -138,7 +138,7 @@ a.cke_dialog_tab {
     border: 1px solid #d1d1d1;
     border-radius: 3px 3px 0 0;
     background: #f8f8f8;
-    min-width: 90px;
+    min-width: 60px;
     text-align: center;
     margin-left: -1px;
     letter-spacing: .3px
@@ -828,4 +828,3 @@ a.cke_dialog_ui_button.cke_dialog_image_browse {
     padding: 0px 4px;
     line-height: 27px;
 }
-
