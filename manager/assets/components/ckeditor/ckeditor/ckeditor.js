@@ -6,7 +6,7 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
     if (window.CKEDITOR && window.CKEDITOR.dom) return;
     window.CKEDITOR || (window.CKEDITOR = function () {
         var a = /(^|.*[\\\/])ckeditor\.js(?:\?.*|;.*)?$/i, d = {
-            timestamp: "HBDD",
+            timestamp: "1.4.5-pl",
             version: "4.8.0",
             revision: "230f715",
             rnd: Math.floor(900 * Math.random()) + 100,
