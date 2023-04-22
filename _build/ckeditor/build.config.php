@@ -4,7 +4,7 @@ define('PKG_NAME','CKEditor');
 define('PKG_NAME_LOWER', strtolower(PKG_NAME));
 
 define('PKG_NAMESPACE','ckeditor');
-define('PKG_VERSION','1.4.4');
+define('PKG_VERSION','1.4.5');
 define('PKG_RELEASE','pl');
 if (isset($_SERVER['MODX_BASE_PATH'])) {
     define('MODX_BASE_PATH', $_SERVER['MODX_BASE_PATH']);

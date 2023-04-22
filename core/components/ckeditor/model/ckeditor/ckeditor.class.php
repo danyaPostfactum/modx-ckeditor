@@ -27,6 +27,7 @@ class CKEditor {
         $this->config = array_merge(array(
             'corePath' => $corePath,
             'managerAssetsUrl' => $managerAssetsUrl,
+            'version' => $this->modx->getOption('ckeditor.version'),
         ), $config);
 
         $this->modx->lexicon->load('ckeditor:default');
@@ -35,8 +36,8 @@ class CKEditor {
     public function initialize() {
         if (!$this->assetsLoaded) {
             $this->modx->controller->addLexiconTopic('ckeditor:default');
-            $this->modx->controller->addJavascript($this->config['managerAssetsUrl'].'modx.htmleditor.js');
-            $this->modx->controller->addJavascript($this->config['managerAssetsUrl'].'ckeditor/ckeditor.js');
+            $this->modx->controller->addJavascript($this->config['managerAssetsUrl'].'modx.htmleditor.js?v='.$this->config['version']);
+            $this->modx->controller->addJavascript($this->config['managerAssetsUrl'].'ckeditor/ckeditor.js?v='.$this->config['version']);
         }
         $this->assetsLoaded = true;
     }

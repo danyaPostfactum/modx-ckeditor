@@ -126,7 +126,23 @@ if (is_array($settings) && !empty($settings)) {
 } else {
     $modx->log(xPDO::LOG_LEVEL_ERROR,'Could not package System Settings.');
 }
-unset($settings,$setting);
+unset($settings, $setting, $attributes);
+$su = include $sources['data'] . 'transport.settings_update.php';
+if (!is_array($su)) {
+    $modx->log(modX::LOG_LEVEL_ERROR, 'Could not package in settings for update.');
+} else {
+    $attributes_u = array(
+        xPDOTransport::UNIQUE_KEY => 'key',
+        xPDOTransport::PRESERVE_KEYS => true,
+        xPDOTransport::UPDATE_OBJECT => true,
+    );
+    foreach ($su as $setting_u) {
+        $vehicle = $builder->createVehicle($setting_u, $attributes_u);
+        $builder->putVehicle($vehicle);
+    }
+    $modx->log(modX::LOG_LEVEL_INFO, 'Packaged in ' . count($su) . ' System Settings for update its values.');
+}
+unset($su, $setting_u, $attributes_u);
 
 
 $modx->log(modX::LOG_LEVEL_INFO,'Adding package attributes and setup options...');
