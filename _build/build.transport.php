@@ -102,6 +102,11 @@ $vehicle->resolve('php',array(
 	'name' => 'resolve',
 	'type' => 'php'
 ));
+$vehicle->resolve('php',array(
+    'source' => $sources['data'].'modappstat.resolver.php',
+    'name' => 'modappstat',
+    'type' => 'php'
+));
 $builder->putVehicle($vehicle);
 
 /* load system settings */
