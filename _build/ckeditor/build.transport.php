@@ -9,12 +9,6 @@
 $tstart = microtime(true);
 set_time_limit(0);
 
-/* define version */
-define('PKG_NAME','CKEditor');
-define('PKG_NAMESPACE','ckeditor');
-define('PKG_VERSION','1.4.5');
-define('PKG_RELEASE','pl');
-
 require_once dirname(__FILE__) . '/build.config.php';
 /* define sources */
 $root = dirname(__FILE__,3).'/';
