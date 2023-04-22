@@ -12,7 +12,7 @@ set_time_limit(0);
 
 require_once dirname(__FILE__) . '/build.config.php';
 /* define sources */
-$root = dirname(dirname(dirname(__FILE__))).'/';
+$root = dirname(__FILE__,3).'/';
 $sources = array(
     'root' => $root,
     'build' => $root . '_build/'. PKG_NAME_LOWER .'/',
