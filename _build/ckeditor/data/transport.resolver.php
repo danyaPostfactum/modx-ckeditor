@@ -4,13 +4,13 @@
  *
  * @author Danil Kostin <danya.postfactum@gmail.com>
  *
- * @package ace
+ * @package CKEditor
  */
 
 /**
  * Resolver to set which_editor to CKEditor
- * 
- * @package ace
+ *
+ * @package CKEditor
  * @subpackage build
  */
 $success= true;
