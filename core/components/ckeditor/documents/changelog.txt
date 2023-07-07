@@ -1,5 +1,26 @@
 Changelog for CKEditor integration into MODx Revolution.
 
+CKEditor 1.4.5 (2023.04.22)
+====================================
+- Added interactive resource selector with search by pagetitle or id in paste link dialog. It paste [[~id]] modx tag as link src
+
+CKEditor 1.4.4 (2023.03.11)
+====================================
+- Added force browser cache flush of old JS-scripts versions when package updated
+
+CKEditor 1.4.3 (2023.03.02)
+====================================
+- Fix initialization in non-TV instances like in ClientConfig extra (thanks @dimasites)
+- Fix no autocorrect text when it's pasted from clipboard while autocorrection enabled and activated
+
+CKEditor 1.4.2 (2023.02.24)
+====================================
+- Fix string param for mediabrowser link (thanks @dimasites)
+
+CKEditor 1.4.1 (2022.04.04)
+====================================
+- Replaced MODX.action by string (MODX3 support)
+
 CKEditor 1.4.0
 ====================================
 - Fixed Save shortcut command (Patrick Reisert @Boddlnagg)

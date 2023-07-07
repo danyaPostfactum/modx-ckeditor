@@ -9,18 +9,14 @@
 $tstart = microtime(true);
 set_time_limit(0);
 
-/* define version */
-define('PKG_NAME','CKEditor');
-define('PKG_NAMESPACE','ckeditor');
-define('PKG_VERSION','1.4.0');
-define('PKG_RELEASE','pl');
-
+require_once dirname(__FILE__) . '/build.config.php';
 /* define sources */
-$root = dirname(dirname(__FILE__)).'/';
+$root = dirname(__FILE__,3).'/';
 $sources = array(
     'root' => $root,
-    'build' => $root . '_build/',
-    'data' => $root . '_build/data/',
+    'build' => $root . '_build/'. PKG_NAME_LOWER .'/',
+    'data' => $root . '_build/'. PKG_NAME_LOWER .'/data/',
+    'processors' => $root . 'core/model/modx/processors/resource/',
     'lexicon' => $root . 'core/components/'.PKG_NAMESPACE.'/lexicon/',
     'documents' => $root.'core/components/'.PKG_NAMESPACE.'/documents/',
     'elements' => $root.'core/components/'.PKG_NAMESPACE.'/elements/',
@@ -30,8 +26,8 @@ $sources = array(
 unset($root);
 
 /* load modx */
-require_once dirname(__FILE__) . '/build.config.php';
 require_once MODX_CORE_PATH . 'model/modx/modx.class.php';
+
 $modx= new modX();
 $modx->initialize('mgr');
 $modx->setLogLevel(modX::LOG_LEVEL_INFO);
@@ -46,7 +42,7 @@ $builder->registerNamespace(PKG_NAMESPACE,false,true,'{core_path}components/'.PK
 $plugin= $modx->newObject('modPlugin');
 $plugin->set('id',1);
 $plugin->set('name', PKG_NAME);
-$plugin->set('description', 'CKEditor WYSIWYG editor plugin for MODx Revolution');
+$plugin->set('description', 'CKEditor WYSIWYG editor plugin for MODX2 and MODX3');
 $plugin->set('static', true);
 $plugin->set('static_file', PKG_NAMESPACE.'/elements/plugins/'.PKG_NAMESPACE.'.plugin.php');
 $plugin->set('category', 0);
@@ -86,6 +82,12 @@ $vehicle->resolve('file',array(
     'source' => $sources['source_manager_assets'],
     'target' => "return MODX_MANAGER_PATH . 'assets/components/';",
 ));
+
+$vehicle->resolve('file',array(
+    'source' => $sources['processors'],
+    'target' => "return MODX_CORE_PATH . 'model/modx/processors/ckeditor/';",
+));
+
 $vehicle->resolve('file',array(
     'source' => $sources['source_core'],
     'target' => "return MODX_CORE_PATH . 'components/';",
@@ -95,10 +97,15 @@ $vehicle->resolve('php',array(
 	'name' => 'resolve',
 	'type' => 'php'
 ));
+$vehicle->resolve('php',array(
+    'source' => $sources['data'].'modappstat.resolver.php',
+    'name' => 'modappstat',
+    'type' => 'php'
+));
 $builder->putVehicle($vehicle);
 
 /* load system settings */
-$settings = include $sources['data'].'transport.settings.php';
+$settings = include $sources['data'].'transport.settings_install.php';
 if (is_array($settings) && !empty($settings)) {
     $attributes= array(
         xPDOTransport::UNIQUE_KEY => 'key',
@@ -113,7 +120,23 @@ if (is_array($settings) && !empty($settings)) {
 } else {
     $modx->log(xPDO::LOG_LEVEL_ERROR,'Could not package System Settings.');
 }
-unset($settings,$setting);
+unset($settings, $setting, $attributes);
+$su = include $sources['data'] . 'transport.settings_update.php';
+if (!is_array($su)) {
+    $modx->log(modX::LOG_LEVEL_ERROR, 'Could not package in settings for update.');
+} else {
+    $attributes_u = array(
+        xPDOTransport::UNIQUE_KEY => 'key',
+        xPDOTransport::PRESERVE_KEYS => true,
+        xPDOTransport::UPDATE_OBJECT => true,
+    );
+    foreach ($su as $setting_u) {
+        $vehicle = $builder->createVehicle($setting_u, $attributes_u);
+        $builder->putVehicle($vehicle);
+    }
+    $modx->log(modX::LOG_LEVEL_INFO, 'Packaged in ' . count($su) . ' System Settings for update its values.');
+}
+unset($su, $setting_u, $attributes_u);
 
 
 $modx->log(modX::LOG_LEVEL_INFO,'Adding package attributes and setup options...');
@@ -135,5 +158,8 @@ $totalTime= ($tend - $tstart);
 $totalTime= sprintf("%2.4f s", $totalTime);
 
 $modx->log(modX::LOG_LEVEL_INFO,"Package built in {$totalTime}\n");
+
+$download_url = '/_build/env/index.php?getpackage='.PKG_NAME_LOWER.'-'.PKG_VERSION.'-'.PKG_RELEASE;
+$modx->log(modX::LOG_LEVEL_INFO,"\n<br /><a target='_blank' href='{$download_url}'>[DOWNLOAD PACKAGE]</a><br />\n");
 
 exit ();
