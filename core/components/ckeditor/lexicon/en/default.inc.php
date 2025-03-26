@@ -38,3 +38,5 @@ $_lang['setting_ckeditor.native_spellchecker'] = 'Native spellchecker';
 $_lang['setting_ckeditor.native_spellchecker_desc'] = 'Enables the built-in words spell checker if browser provides one.';
 $_lang['setting_ckeditor.resource_editor_height'] = 'Resource editor height';
 $_lang['setting_ckeditor.resource_editor_height_desc'] = 'Resource (document) content editor height adjustment';
+$_lang['setting_ckeditor.version'] = 'Package version';
+$_lang['setting_ckeditor.version_desc'] = 'Updated automatically, used for manager browser JS cache flush';

@@ -28,3 +28,5 @@ $_lang['setting_ckeditor.autocorrect_double_quotes'] = 'Anführungszeichen';
 $_lang['setting_ckeditor.autocorrect_double_quotes_desc'] = 'A pair of opening and closing marks to convert typewriter quotation marks to (smart quotes). In english writing “curly quotes” are used.';
 $_lang['setting_ckeditor.autocorrect_single_quotes'] = 'einfache Anführungszeichen';
 $_lang['setting_ckeditor.autocorrect_single_quotes_desc'] = 'A pair of opening and closing marks to convert typewriter apostrophes to (smart quotes). In english writing ‘curly quotes’ are used.';
+$_lang['setting_ckeditor.version'] = 'Paket version';
+$_lang['setting_ckeditor.version_desc'] = 'Automatisch aktualisiert. wird für Manager Browser JS Cache Flush verwendet';

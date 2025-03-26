@@ -83,7 +83,7 @@ function getOption(key, type, defaultValue) {
 
 function getFileBrowseUrl() {
     var url = MODx.config['manager_url'] + 'index.php';
-    var query = {a: MODx.action['browser'], source: MODx.config['default_media_source']};
+    var query = {a: 'browser', source: MODx.config['default_media_source']};
     return url + '?' + Ext.urlEncode(query);
 }
 
